@@ -1,0 +1,5 @@
+set hlsearch
+set surround
+
+inoremap jj <Esc>
+nnoremap <C-l> :noh<CR><C-l>
