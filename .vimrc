@@ -1,6 +1,6 @@
 if has('win32')
-	set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-	set viminfo+=n~/.viminfo
+  set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+  set viminfo+=n~/.viminfo
 endif
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -29,4 +29,19 @@ call plug#end()
 
 colorscheme inkpot
 inoremap jj <Esc>
+
+set hlsearch
+set linebreak showbreak=↩
+set showcmd
+
+if exists('+relativenumber')
+  set relativenumber
+else
+  set number
+endif
+
 set tabstop=2 shiftwidth=2
+
+if exists('+breakindent')
+  set breakindent breakindentopt=sbr
+endif
