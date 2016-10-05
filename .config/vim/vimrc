@@ -1,0 +1,42 @@
+if !filereadable($XDG_CACHE_HOME . '/vim/autoload/plug.vim')
+  silent !curl -fLo $XDG_CACHE_HOME/vim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall
+endif
+
+call plug#begin($XDG_CACHE_HOME . '/vim/bundle')
+Plug 'tpope/vim-sensible'
+
+Plug 'ciaranm/inkpot'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'wincent/terminus'
+
+Plug 'sukima/xmledit'
+
+if has('macunix')
+  Plug 'itspriddle/vim-marked'
+endif
+
+call plug#end()
+
+colorscheme inkpot
+inoremap jj <Esc>
+
+set hlsearch
+set linebreak showbreak=↩
+set showcmd
+
+if exists('+relativenumber')
+  set relativenumber
+else
+  set number
+endif
+
+set tabstop=2 shiftwidth=2
+
+if exists('+breakindent')
+  set breakindent breakindentopt=sbr
+endif

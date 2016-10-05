@@ -1,47 +1,10 @@
-if has('win32')
-  set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-  set viminfo+=n~/.viminfo
-endif
+for [var, value] in items({'XDG_CONFIG_HOME': '~/.config', 'XDG_CACHE_HOME': '~/.cache', 'XDG_DATA_HOME': '~/.local/share'})
+  if (empty(eval('$' . var)))
+    exec 'let $' . var . ' = expand(value)'
+  endif
+endfor
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall
-endif
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CACHE_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after,$XDG_CACHE_HOME/vim/after
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 
-call plug#begin('~/.vim/bundle')
-Plug 'tpope/vim-sensible'
-
-Plug 'ciaranm/inkpot'
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'wincent/terminus'
-
-Plug 'sukima/xmledit'
-
-if has('macunix')
-  Plug 'itspriddle/vim-marked'
-endif
-
-call plug#end()
-
-colorscheme inkpot
-inoremap jj <Esc>
-
-set hlsearch
-set linebreak showbreak=↩
-set showcmd
-
-if exists('+relativenumber')
-  set relativenumber
-else
-  set number
-endif
-
-set tabstop=2 shiftwidth=2
-
-if exists('+breakindent')
-  set breakindent breakindentopt=sbr
-endif
+source $XDG_CONFIG_HOME/vim/vimrc
