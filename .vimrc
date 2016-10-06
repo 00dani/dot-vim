@@ -9,3 +9,4 @@ set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 let g:netrw_home = $XDG_CACHE_HOME . '/netrw'
 
 source $XDG_CONFIG_HOME/vim/vimrc
+let $MYVIMRC = $XDG_CONFIG_HOME . '/vim/vimrc'
