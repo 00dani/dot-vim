@@ -1,0 +1,4 @@
+config => .config
+gvimrc => .gvimrc
+ideavimrc => .ideavimrc
+vimrc => .vimrc
