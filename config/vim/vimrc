@@ -12,7 +12,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 
 Plug 'sheerun/vim-polyglot'
@@ -20,6 +19,10 @@ Plug 'sukima/xmledit'
 
 if has('macunix')
   Plug 'itspriddle/vim-marked'
+endif
+
+if has('job')
+  Plug 'w0rp/ale'
 endif
 
 call plug#end()
