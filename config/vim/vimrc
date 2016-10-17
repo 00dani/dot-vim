@@ -33,6 +33,7 @@ inoremap jj <Esc>
 set hlsearch
 set linebreak showbreak=↩
 set showcmd
+set wildmode=longest,full
 
 if exists('+relativenumber')
   set relativenumber
