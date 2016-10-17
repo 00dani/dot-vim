@@ -17,6 +17,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'wincent/loupe'
 Plug 'wincent/terminus'
 
 Plug 'sheerun/vim-polyglot'
@@ -35,7 +36,6 @@ call plug#end()
 colorscheme inkpot
 inoremap jj <Esc>
 
-set hlsearch
 set linebreak showbreak=↩
 set showcmd
 set wildmode=longest,full
