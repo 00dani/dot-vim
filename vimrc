@@ -1,6 +1,6 @@
-for [var, value] in items({'XDG_CONFIG_HOME': '~/.config', 'XDG_CACHE_HOME': '~/.cache', 'XDG_DATA_HOME': '~/.local/share'})
-  if (empty(eval('$' . var)))
-    exec 'let $' . var . ' = expand(value)'
+for [s:var, s:value] in items({'XDG_CONFIG_HOME': '~/.config', 'XDG_CACHE_HOME': '~/.cache', 'XDG_DATA_HOME': '~/.local/share'})
+  if (empty(eval('$' . s:var)))
+    exec 'let $' . s:var . ' = expand(s:value)'
   endif
 endfor
 
