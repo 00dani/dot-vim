@@ -13,6 +13,9 @@ Plug 'tpope/vim-sensible'
 
 Plug 'ciaranm/inkpot'
 Plug 'ervandew/supertab'
+Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'powerline/powerline', {'branch': 'develop', 'rtp': 'powerline/bindings/vim/'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -20,25 +23,34 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wincent/loupe'
 Plug 'wincent/terminus'
 
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
-
-if has('macunix')
-  Plug 'itspriddle/vim-marked'
-endif
 
 if has('job')
   Plug 'w0rp/ale'
 endif
 
+if has('macunix')
+  Plug 'itspriddle/vim-marked'
+endif
 call plug#end()
 
 colorscheme inkpot
+hi Normal ctermbg=NONE
+
 inoremap jj <Esc>
+nnoremap <C-t> :Files<CR>
 
 set linebreak showbreak=↩
 set showcmd
 set wildmode=longest,full
+
+set tabstop=2 shiftwidth=2
+
+if exists('+breakindent')
+  set breakindent breakindentopt=sbr
+endif
 
 if exists('+relativenumber')
   set relativenumber
@@ -46,8 +58,4 @@ else
   set number
 endif
 
-set tabstop=2 shiftwidth=2
-
-if exists('+breakindent')
-  set breakindent breakindentopt=sbr
-endif
+let g:LatexBox_Folding = 1
