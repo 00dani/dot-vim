@@ -16,6 +16,7 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'powerline/powerline', {'branch': 'develop', 'rtp': 'powerline/bindings/vim/'}
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -59,3 +60,4 @@ else
 endif
 
 let g:LatexBox_Folding = 1
+let g:NERDTreeHijackNetrw = 1
