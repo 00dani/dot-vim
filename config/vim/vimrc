@@ -25,6 +25,7 @@ Plug 'wincent/loupe'
 Plug 'wincent/terminus'
 
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'vhda/verilog_systemverilog.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 
