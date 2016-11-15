@@ -59,6 +59,14 @@ else
   set number
 endif
 
+if exists('+undofile')
+  set undofile
+  let &undodir = $XDG_CACHE_HOME . '/vim/undo'
+  if filewritable(&undodir) != 2
+    call mkdir(&undodir, 'p', 0700)
+  endif
+endif
+
 let g:airline_powerline_fonts = 1
 let g:LatexBox_Folding = 1
 let g:NERDTreeHijackNetrw = 1
