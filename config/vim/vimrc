@@ -13,6 +13,7 @@ Plug 'tpope/vim-sensible'
 
 Plug 'ciaranm/inkpot'
 Plug 'ervandew/supertab'
+Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
