@@ -12,6 +12,7 @@ call plug#begin($XDG_CACHE_HOME . '/vim/bundle')
 Plug 'tpope/vim-sensible'
 
 Plug 'ciaranm/inkpot'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
