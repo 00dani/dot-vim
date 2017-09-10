@@ -8,6 +8,12 @@ if !filereadable($XDG_CACHE_HOME . '/vim/autoload/plug.vim')
   augroup END
 endif
 
+function s:ensure_dir(dir)
+  if filewritable(a:dir) != 2
+    call mkdir(a:dir, "p", 0700)
+  endif
+endfunction
+
 call plug#begin($XDG_CACHE_HOME . '/vim/bundle')
 Plug 'tpope/vim-sensible'
 
@@ -62,12 +68,15 @@ else
   set number
 endif
 
+for s:dir in ['backup', 'swap', 'undo']
+  call s:ensure_dir($XDG_CACHE_HOME . '/vim/' . s:dir)
+endfor
+
+set backupdir=.,$XDG_CACHE_HOME/vim/backup
+set directory=.,$XDG_CACHE_HOME/vim/swap
 if exists('+undofile')
   set undofile
-  let &undodir = $XDG_CACHE_HOME . '/vim/undo'
-  if filewritable(&undodir) != 2
-    call mkdir(&undodir, 'p', 0700)
-  endif
+  set undodir=$XDG_CACHE_HOME/vim/undo
 endif
 
 let g:airline_powerline_fonts = 1
