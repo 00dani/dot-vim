@@ -37,6 +37,9 @@ Plug 'vhda/verilog_systemverilog.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 
+Plug 'alx741/yesod.vim'
+Plug 'pbrisbin/vim-syntax-shakespeare'
+
 if has('neovim') || exists('*ch_close_in')
   Plug 'w0rp/ale'
 endif
