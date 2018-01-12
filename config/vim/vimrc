@@ -1,56 +1,67 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-if !filereadable($XDG_CACHE_HOME . '/vim/autoload/plug.vim')
-  silent !curl -fLo $XDG_CACHE_HOME/vim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  augroup vimplug
-    autocmd VimEnter * PlugInstall
-  augroup END
-endif
-
 function s:ensure_dir(dir)
   if filewritable(a:dir) != 2
     call mkdir(a:dir, "p", 0700)
   endif
 endfunction
 
-call plug#begin($XDG_CACHE_HOME . '/vim/bundle')
-Plug 'tpope/vim-sensible'
+silent! packadd minpac
+if !exists('*minpac#init')
+  silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
+  augroup minpac
+    autocmd!
+    autocmd VimEnter * call minpac#update()
+  augroup END
+endif
 
-Plug 'ciaranm/inkpot'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'ervandew/supertab'
-Plug 'jamessan/vim-gnupg'
-Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-Plug 'wincent/loupe'
-Plug 'wincent/terminus'
+packadd minpac
 
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'vhda/verilog_systemverilog.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'sukima/xmledit'
+call minpac#init({'dir': $XDG_CACHE_HOME . '/vim'})
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('tpope/vim-sensible')
 
-Plug 'alx741/yesod.vim'
-Plug 'pbrisbin/vim-syntax-shakespeare'
+call minpac#add('ciaranm/inkpot', {'do': 'colorscheme inkpot'})
+call minpac#add('editorconfig/editorconfig-vim')
+call minpac#add('ervandew/supertab')
+call minpac#add('jamessan/vim-gnupg')
+call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf.vim')
+call minpac#add('junegunn/vim-easy-align')
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-sleuth')
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('wincent/loupe')
+call minpac#add('wincent/terminus')
+
+call minpac#add('LaTeX-Box-Team/LaTeX-Box')
+call minpac#add('vhda/verilog_systemverilog.vim')
+call minpac#add('sheerun/vim-polyglot')
+call minpac#add('sukima/xmledit')
+
+call minpac#add('lepture/vim-jinja')
+
+call minpac#add('alx741/yesod.vim')
+call minpac#add('pbrisbin/vim-syntax-shakespeare')
 
 if has('neovim') || exists('*ch_close_in')
-  Plug 'w0rp/ale'
+  call minpac#add('w0rp/ale')
 endif
 
 if has('macunix')
-  Plug 'itspriddle/vim-marked'
+  call minpac#add('itspriddle/vim-marked')
 endif
-call plug#end()
 
-colorscheme inkpot
-hi Normal ctermbg=NONE
+silent! colorscheme inkpot
+augroup transparent_term
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE
+augroup END
 
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>
