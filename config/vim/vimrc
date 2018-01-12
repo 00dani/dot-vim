@@ -1,7 +1,7 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-function s:ensure_dir(dir)
+function! s:ensure_dir(dir)
   if filewritable(a:dir) != 2
     call mkdir(a:dir, "p", 0700)
   endif
