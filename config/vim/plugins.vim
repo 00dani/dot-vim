@@ -13,7 +13,7 @@ call minpac#init({'dir': $XDG_CACHE_HOME . '/vim'})
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-sensible')
 
-call minpac#add('ciaranm/inkpot', {'do': 'colorscheme inkpot'})
+call minpac#add('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
 call minpac#add('editorconfig/editorconfig-vim')
 call minpac#add('ervandew/supertab')
 call minpac#add('jamessan/vim-gnupg')
