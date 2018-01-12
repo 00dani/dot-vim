@@ -7,14 +7,19 @@ function! s:ensure_dir(dir)
   endif
 endfunction
 
+" These are really clever - minpac will actually be loaded on the fly only
+" when you need to update or clean your packages, rather than all the time.
 command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#update()
 command! PackClean  source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#clean()
 
-silent! packadd vim-sensible
-if !exists('g:loaded_sensible')
+" If the pack directory doesn't exist, we haven't installed any packages yet,
+" so let's call PackUpdate.
+if !isdirectory($XDG_CACHE_HOME . '/vim/pack')
   PackUpdate
 endif
 
+" Use Inkpot, since it's gorgeous, but with a transparent background instead
+" of a solid black one.
 augroup transparent_term
   autocmd!
   autocmd ColorScheme * highlight Normal ctermbg=NONE
