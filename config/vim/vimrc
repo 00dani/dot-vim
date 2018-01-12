@@ -7,61 +7,19 @@ function! s:ensure_dir(dir)
   endif
 endfunction
 
-silent! packadd minpac
-if !exists('*minpac#init')
-  silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
-  augroup minpac
-    autocmd!
-    autocmd VimEnter * call minpac#update()
-  augroup END
+command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#update()
+command! PackClean  source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#clean()
+
+silent! packadd vim-sensible
+if !exists('g:loaded_sensible')
+  PackUpdate
 endif
 
-packadd minpac
-
-call minpac#init({'dir': $XDG_CACHE_HOME . '/vim'})
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('tpope/vim-sensible')
-
-call minpac#add('ciaranm/inkpot', {'do': 'colorscheme inkpot'})
-call minpac#add('editorconfig/editorconfig-vim')
-call minpac#add('ervandew/supertab')
-call minpac#add('jamessan/vim-gnupg')
-call minpac#add('junegunn/fzf')
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('junegunn/vim-easy-align')
-call minpac#add('scrooloose/nerdtree')
-call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-sleuth')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-unimpaired')
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('wincent/loupe')
-call minpac#add('wincent/terminus')
-
-call minpac#add('LaTeX-Box-Team/LaTeX-Box')
-call minpac#add('vhda/verilog_systemverilog.vim')
-call minpac#add('sheerun/vim-polyglot')
-call minpac#add('sukima/xmledit')
-
-call minpac#add('lepture/vim-jinja')
-
-call minpac#add('alx741/yesod.vim')
-call minpac#add('pbrisbin/vim-syntax-shakespeare')
-
-if has('neovim') || exists('*ch_close_in')
-  call minpac#add('w0rp/ale')
-endif
-
-if has('macunix')
-  call minpac#add('itspriddle/vim-marked')
-endif
-
-silent! colorscheme inkpot
 augroup transparent_term
   autocmd!
   autocmd ColorScheme * highlight Normal ctermbg=NONE
 augroup END
+silent! colorscheme inkpot
 
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>
