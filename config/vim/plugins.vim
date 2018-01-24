@@ -29,6 +29,7 @@ call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('wincent/loupe')
 call minpac#add('wincent/terminus')
+call minpac#add('w0rp/ale')
 
 call minpac#add('LaTeX-Box-Team/LaTeX-Box')
 call minpac#add('vhda/verilog_systemverilog.vim')
@@ -40,9 +41,6 @@ call minpac#add('lepture/vim-jinja')
 call minpac#add('alx741/yesod.vim')
 call minpac#add('pbrisbin/vim-syntax-shakespeare')
 
-if has('neovim') || exists('*ch_close_in')
-  call minpac#add('w0rp/ale')
-endif
 
 if has('macunix')
   call minpac#add('itspriddle/vim-marked')
