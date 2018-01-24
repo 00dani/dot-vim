@@ -29,6 +29,9 @@ silent! colorscheme inkpot
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>
 
+set belloff+=ctrlg
+set completeopt+=menuone
+
 set linebreak showbreak=↩
 set showcmd
 set wildmode=longest,full
