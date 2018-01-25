@@ -18,13 +18,25 @@ if !isdirectory($XDG_CACHE_HOME . '/vim/pack')
   PackUpdate
 endif
 
-" Use Inkpot, since it's gorgeous, but with a transparent background instead
-" of a solid black one.
 augroup transparent_term
   autocmd!
-  autocmd ColorScheme * highlight Normal ctermbg=NONE
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 augroup END
-silent! colorscheme inkpot
+set background=dark
+let g:gruvbox_italic=1
+let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_warnings=1
+
+" The 'termguicolors' option is a little broken in Vim and can't have
+" transparent background colours. It works totally fine in Neovim though.
+if has('gui_running') || has('nvim')
+  set termguicolors
+  packadd gruvbox
+  let g:airline_theme = 'gruvbox'
+  colorscheme gruvbox
+else
+  colorscheme inkpot
+endif
 
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>

@@ -14,6 +14,8 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-sensible')
 
 call minpac#add('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
+call minpac#add('morhetz/gruvbox', {'type': 'opt'})
+
 call minpac#add('editorconfig/editorconfig-vim')
 call minpac#add('jamessan/vim-gnupg')
 call minpac#add('junegunn/fzf')
