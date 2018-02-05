@@ -1,4 +1,4 @@
-set guifont=Hack:h14
+set guifont=FiraCode-Regular:h14
 
 set guioptions-=m
 set guioptions-=T
