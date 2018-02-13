@@ -1,55 +1,83 @@
-silent! packadd minpac
-if !exists('*minpac#init')
-  silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
-  augroup minpac
-    autocmd!
-    autocmd VimEnter * call minpac#update()
-  augroup END
+if exists('+packpath')
+  silent! packadd minpac
+  if !exists('*minpac#init')
+    silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
+    augroup minpac
+      autocmd!
+      autocmd VimEnter * call minpac#update()
+    augroup END
+  endif
+
+  function! Plug(...)
+    call call('minpac#add', a:000)
+  endfunction
+
+  function! PlugEnd()
+  endfunction
+
+  packadd minpac
+
+  call minpac#init({'dir': $XDG_CACHE_HOME . '/vim'})
+else
+  if !filereadable($XDG_CACHE_HOME . '/vim/autoload/plug.vim')
+    silent !curl -fLo $XDG_CACHE_HOME/vim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    augroup vimplug
+      autocmd VimEnter * PlugInstall
+    augroup END
+  endif
+
+  function! Plug(name, ...)
+    call plug#(name)
+  endfunction
+
+  function! PlugEnd()
+    call plug#end()
+  endfunction
+
+  call plug#begin($XDG_CACHE_HOME . '/vim/plugged')
 endif
 
-packadd minpac
+call Plug('k-takata/minpac', {'type': 'opt'})
+call Plug('tpope/vim-sensible')
 
-call minpac#init({'dir': $XDG_CACHE_HOME . '/vim'})
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('tpope/vim-sensible')
+call Plug('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
+call Plug('morhetz/gruvbox', {'type': 'opt'})
 
-call minpac#add('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
-call minpac#add('morhetz/gruvbox', {'type': 'opt'})
+call Plug('editorconfig/editorconfig-vim')
+call Plug('jamessan/vim-gnupg')
+call Plug('junegunn/fzf')
+call Plug('junegunn/fzf.vim')
+call Plug('junegunn/vim-easy-align')
+call Plug('lifepillar/vim-mucomplete')
+call Plug('mhinz/vim-signify')
+call Plug('scrooloose/nerdtree')
+call Plug('sjl/vitality.vim')
+call Plug('tpope/vim-commentary')
+call Plug('tpope/vim-endwise')
+call Plug('tpope/vim-fugitive')
+call Plug('tpope/vim-repeat')
+call Plug('tpope/vim-rhubarb')
+call Plug('tpope/vim-sleuth')
+call Plug('tpope/vim-surround')
+call Plug('tpope/vim-unimpaired')
+call Plug('vim-airline/vim-airline')
+call Plug('vim-airline/vim-airline-themes')
+call Plug('wincent/loupe')
+call Plug('wincent/terminus')
+call Plug('w0rp/ale')
 
-call minpac#add('editorconfig/editorconfig-vim')
-call minpac#add('jamessan/vim-gnupg')
-call minpac#add('junegunn/fzf')
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('junegunn/vim-easy-align')
-call minpac#add('lifepillar/vim-mucomplete')
-call minpac#add('mhinz/vim-signify')
-call minpac#add('scrooloose/nerdtree')
-call minpac#add('sjl/vitality.vim')
-call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-endwise')
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-rhubarb')
-call minpac#add('tpope/vim-sleuth')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-unimpaired')
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('wincent/loupe')
-call minpac#add('wincent/terminus')
-call minpac#add('w0rp/ale')
+call Plug('LaTeX-Box-Team/LaTeX-Box')
+call Plug('vhda/verilog_systemverilog.vim')
+call Plug('sheerun/vim-polyglot')
+call Plug('sukima/xmledit')
 
-call minpac#add('LaTeX-Box-Team/LaTeX-Box')
-call minpac#add('vhda/verilog_systemverilog.vim')
-call minpac#add('sheerun/vim-polyglot')
-call minpac#add('sukima/xmledit')
+call Plug('lepture/vim-jinja')
 
-call minpac#add('lepture/vim-jinja')
-
-call minpac#add('alx741/yesod.vim')
-call minpac#add('pbrisbin/vim-syntax-shakespeare')
-
+call Plug('alx741/yesod.vim')
+call Plug('pbrisbin/vim-syntax-shakespeare')
 
 if has('macunix')
-  call minpac#add('itspriddle/vim-marked')
+  call Plug('itspriddle/vim-marked')
 endif
+
+call PlugEnd()

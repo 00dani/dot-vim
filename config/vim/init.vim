@@ -7,15 +7,21 @@ function! s:ensure_dir(dir)
   endif
 endfunction
 
-" These are really clever - minpac will actually be loaded on the fly only
-" when you need to update or clean your packages, rather than all the time.
-command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#update()
-command! PackClean  source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#clean()
+if exists('+packpath')
+  " These are really clever - minpac will actually be loaded on the fly only
+  " when you need to update or clean your packages, rather than all the time.
+  command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#update()
+  command! PackClean  source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#clean()
 
-" If the pack directory doesn't exist, we haven't installed any packages yet,
-" so let's call PackUpdate.
-if !isdirectory($XDG_CACHE_HOME . '/vim/pack')
-  PackUpdate
+  " If the pack directory doesn't exist, we haven't installed any packages yet,
+  " so let's call PackUpdate.
+  if !isdirectory($XDG_CACHE_HOME . '/vim/pack')
+    PackUpdate
+  endif
+else
+  " If we're on a version of Vim that doesn't have packages, we have to load a
+  " plugin manager (vim-plug) on every boot.
+  source $XDG_CONFIG_HOME/vim/plugins.vim
 endif
 
 augroup transparent_term
@@ -31,7 +37,7 @@ let g:gruvbox_improved_warnings=1
 " transparent background colours. It works totally fine in Neovim though.
 if has('gui_running') || has('nvim')
   set termguicolors
-  packadd gruvbox
+  silent! packadd gruvbox
   let g:airline_theme = 'gruvbox'
   colorscheme gruvbox
 else
