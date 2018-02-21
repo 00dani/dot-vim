@@ -27,7 +27,7 @@ else
   endif
 
   function! Plug(name, ...)
-    call plug#(name)
+    call plug#(a:name)
   endfunction
 
   function! PlugEnd()
