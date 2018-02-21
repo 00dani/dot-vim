@@ -47,7 +47,10 @@ endif
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>
 
-set belloff+=ctrlg
+if exists('+belloff')
+  set belloff+=ctrlg
+endif
+
 set completeopt+=menuone
 
 set linebreak showbreak=↩
