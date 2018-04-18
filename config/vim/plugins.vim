@@ -39,6 +39,7 @@ endif
 
 call Plug('k-takata/minpac', {'type': 'opt'})
 call Plug('tpope/vim-sensible')
+call Plug('prabirshrestha/async.vim')
 
 call Plug('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
 call Plug('morhetz/gruvbox', {'type': 'opt'})
@@ -72,6 +73,8 @@ call Plug('sheerun/vim-polyglot')
 call Plug('sukima/xmledit')
 
 call Plug('lepture/vim-jinja')
+
+call Plug('ternjs/tern_for_vim', {'do': {-> async#job#start(['npm', 'install'], {})}})
 
 call Plug('alx741/yesod.vim')
 call Plug('pbrisbin/vim-syntax-shakespeare')

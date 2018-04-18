@@ -47,6 +47,7 @@ endif
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>
 
+
 if exists('+belloff')
   set belloff+=ctrlg
 endif
@@ -83,3 +84,14 @@ endif
 let g:airline_powerline_fonts = 1
 let g:LatexBox_Folding = 1
 let g:NERDTreeHijackNetrw = 1
+
+let g:mucomplete#can_complete = {
+  \'default': {
+    \'omni': {t -> strlen(&l:omnifunc) > 0 && t =~# '\m\k\%(\k\|\.\)$'}
+  \}
+\}
+
+" For lifepillar/vim-mucomplete and tpope/vim-endwise to play well together,
+" this mapping is required. :he mucomplete-compatibility
+imap <Plug>MyCR <Plug>(MUcompleteCR)
+imap <cr> <Plug>MyCR
