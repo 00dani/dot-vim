@@ -72,7 +72,9 @@ call Plug('vhda/verilog_systemverilog.vim')
 call Plug('sheerun/vim-polyglot')
 call Plug('sukima/xmledit')
 
-call Plug('lepture/vim-jinja')
+call Plug('ehamberg/vim-cute-python')
+call Plug('tweekmonster/braceless.vim')
+call Plug('tweekmonster/django-plus.vim')
 
 call Plug('ternjs/tern_for_vim', {'do': {-> async#job#start(['npm', 'install'], {})}})
 
