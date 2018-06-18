@@ -77,6 +77,7 @@ call Plug('tweekmonster/braceless.vim')
 call Plug('tweekmonster/django-plus.vim')
 
 call Plug('ternjs/tern_for_vim', {'do': {-> async#job#start(['npm', 'install'], {})}})
+call Plug('vito-c/jq.vim')
 
 call Plug('alx741/yesod.vim')
 call Plug('pbrisbin/vim-syntax-shakespeare')
