@@ -33,9 +33,7 @@ let g:gruvbox_italic=1
 let g:gruvbox_improved_strings=1
 let g:gruvbox_improved_warnings=1
 
-" The 'termguicolors' option is a little broken in Vim and can't have
-" transparent background colours. It works totally fine in Neovim though.
-if has('gui_running') || has('nvim')
+if has('gui_running') || has('termguicolors')
   set termguicolors
   silent! packadd gruvbox
   let g:airline_theme = 'gruvbox'
