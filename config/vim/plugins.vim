@@ -73,8 +73,8 @@ call Plug('sheerun/vim-polyglot')
 call Plug('sukima/xmledit')
 
 call Plug('ehamberg/vim-cute-python')
+call Plug('Glench/Vim-Jinja2-Syntax')
 call Plug('tweekmonster/braceless.vim')
-call Plug('tweekmonster/django-plus.vim')
 
 call Plug('ternjs/tern_for_vim', {'do': {-> async#job#start(['npm', 'install'], {})}})
 call Plug('vito-c/jq.vim')
