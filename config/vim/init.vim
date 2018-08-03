@@ -88,8 +88,3 @@ let g:mucomplete#can_complete = {
     \'omni': {t -> strlen(&l:omnifunc) > 0 && t =~# '\m\k\%(\k\|\.\)$'}
   \}
 \}
-
-" For lifepillar/vim-mucomplete and tpope/vim-endwise to play well together,
-" this mapping is required. :he mucomplete-compatibility
-imap <Plug>MyCR <Plug>(MUcompleteCR)
-imap <cr> <Plug>MyCR
