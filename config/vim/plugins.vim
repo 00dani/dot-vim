@@ -70,10 +70,10 @@ call Plug('wincent/loupe')
 call Plug('wincent/terminus')
 call Plug('w0rp/ale')
 
+call Plug('alvan/vim-closetag')
 call Plug('LaTeX-Box-Team/LaTeX-Box')
 call Plug('vhda/verilog_systemverilog.vim')
 call Plug('sheerun/vim-polyglot')
-call Plug('sukima/xmledit')
 
 call Plug('ehamberg/vim-cute-python')
 call Plug('Glench/Vim-Jinja2-Syntax')
