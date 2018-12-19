@@ -45,6 +45,7 @@ call Plug('prabirshrestha/async.vim')
 call Plug('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
 call Plug('morhetz/gruvbox', {'type': 'opt'})
 
+call Plug('direnv/direnv.vim')
 call Plug('editorconfig/editorconfig-vim')
 call Plug('godlygeek/tabular')
 call Plug('jamessan/vim-gnupg')
