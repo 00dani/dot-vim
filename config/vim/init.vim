@@ -83,6 +83,10 @@ let g:airline_powerline_fonts = 1
 let g:LatexBox_Folding = 1
 let g:NERDTreeHijackNetrw = 1
 
+let g:ale_set_balloons = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 let g:mucomplete#can_complete = {
   \'default': {
     \'omni': {t -> strlen(&l:omnifunc) > 0 && t =~# '\m\k\%(\k\|\.\)$'}
