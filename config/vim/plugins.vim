@@ -89,7 +89,9 @@ call Plug('alx741/yesod.vim')
 call Plug('pbrisbin/vim-syntax-shakespeare')
 
 if has('macunix')
-  call Plug('itspriddle/vim-marked')
+  " We rename this plugin to make sure it loads AFTER vim-polyglot,
+  " since it won't work properly if it's loaded first.
+  call Plug('itspriddle/vim-marked', {'name': 'zzvim-marked'})
 endif
 
 call PlugEnd()
