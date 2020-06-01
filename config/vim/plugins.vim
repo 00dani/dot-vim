@@ -78,6 +78,8 @@ call Plug('LaTeX-Box-Team/LaTeX-Box')
 call Plug('vhda/verilog_systemverilog.vim')
 call Plug('sheerun/vim-polyglot')
 
+call Plug('eipipuz/factor.vim')
+
 call Plug('ehamberg/vim-cute-python')
 call Plug('Glench/Vim-Jinja2-Syntax')
 call Plug('tweekmonster/braceless.vim')
