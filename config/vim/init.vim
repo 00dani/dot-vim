@@ -10,7 +10,7 @@ endfunction
 if exists('+packpath')
   " These are really clever - minpac will actually be loaded on the fly only
   " when you need to update or clean your packages, rather than all the time.
-  command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#update('', {'do': 'call minpac#status()'})
+  command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#update()
   command! PackClean  source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#clean()
   command! PackStatus source $XDG_CONFIG_HOME/vim/plugins.vim | call minpac#status()
 
