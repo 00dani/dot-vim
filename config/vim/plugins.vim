@@ -67,11 +67,14 @@ call Plug('tpope/vim-rhubarb')
 call Plug('tpope/vim-sleuth')
 call Plug('tpope/vim-surround')
 call Plug('tpope/vim-unimpaired')
-call Plug('vim-airline/vim-airline')
-call Plug('vim-airline/vim-airline-themes')
+
 call Plug('wincent/loupe')
 call Plug('wincent/terminus')
 call Plug('w0rp/ale')
+
+call Plug('vim-airline/vim-airline')
+call Plug('vim-airline/vim-airline-themes')
+call Plug('lambdalisue/battery.vim')
 
 call Plug('alvan/vim-closetag')
 call Plug('LaTeX-Box-Team/LaTeX-Box')
