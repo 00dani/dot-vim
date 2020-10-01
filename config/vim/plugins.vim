@@ -1,6 +1,6 @@
 if exists('+packpath')
   silent! packadd minpac
-  if !exists('*minpac#init')
+  if !exists('g:loaded_minpac')
     silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
     augroup minpac
       autocmd!
