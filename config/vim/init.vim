@@ -54,6 +54,7 @@ endif
 set completeopt+=menuone
 
 set linebreak showbreak=↩
+set modelines=5
 set showcmd
 set wildmode=longest,full
 
