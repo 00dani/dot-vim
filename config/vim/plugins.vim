@@ -90,6 +90,8 @@ call Plug('tweekmonster/braceless.vim')
 call Plug('ternjs/tern_for_vim', {'do': {-> async#job#start(['npm', 'install'], {})}})
 call Plug('vito-c/jq.vim')
 
+call Plug('fpob/nette.vim')
+
 call Plug('alx741/yesod.vim')
 call Plug('pbrisbin/vim-syntax-shakespeare')
 
