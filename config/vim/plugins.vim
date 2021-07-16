@@ -92,7 +92,9 @@ call Plug('vito-c/jq.vim')
 
 call Plug('fpob/nette.vim')
 
-call Plug('farseer90718/vim-taskwarrior')
+if executable('task')
+  call Plug('farseer90718/vim-taskwarrior')
+endif
 
 call Plug('alx741/yesod.vim')
 call Plug('pbrisbin/vim-syntax-shakespeare')
