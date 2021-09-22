@@ -71,14 +71,14 @@ else
 endif
 
 for s:dir in ['backup', 'swap', 'undo']
-  call s:ensure_dir($XDG_CACHE_HOME . '/vim/' . s:dir)
+  call s:ensure_dir($XDG_STATE_HOME . '/vim/' . s:dir)
 endfor
 
-set backupdir=.,$XDG_CACHE_HOME/vim/backup
-set directory=.,$XDG_CACHE_HOME/vim/swap
+set backupdir=.,$XDG_STATE_HOME/vim/backup
+set directory=.,$XDG_STATE_HOME/vim/swap
 if exists('+undofile')
   set undofile
-  set undodir=$XDG_CACHE_HOME/vim/undo
+  set undodir=$XDG_STATE_HOME/vim/undo
 endif
 
 let g:airline_powerline_fonts = 1
