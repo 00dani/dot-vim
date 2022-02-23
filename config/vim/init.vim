@@ -84,6 +84,8 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#battery#enabled = 1
 
+let g:csv_no_conceal = 1
+
 let g:LatexBox_Folding = 1
 let g:NERDTreeHijackNetrw = 1
 
