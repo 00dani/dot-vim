@@ -89,6 +89,8 @@ call Plug('tweekmonster/braceless.vim')
 call Plug('ternjs/tern_for_vim', {'do': {-> async#job#start(['npm', 'install'], {})}})
 call Plug('vito-c/jq.vim')
 
+call Plug('fladson/vim-kitty')
+
 call Plug('fpob/nette.vim')
 
 if executable('task')
