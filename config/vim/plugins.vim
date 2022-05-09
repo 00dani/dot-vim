@@ -39,7 +39,6 @@ endif
 
 call Plug('k-takata/minpac', {'type': 'opt'})
 call Plug('tpope/vim-sensible')
-call Plug('ConradIrwin/vim-bracketed-paste')
 call Plug('prabirshrestha/async.vim')
 
 call Plug('ciaranm/inkpot', {'type': 'opt', 'do': 'colorscheme inkpot'})
