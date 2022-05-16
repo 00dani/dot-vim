@@ -71,6 +71,8 @@ call Plug('wincent/loupe')
 call Plug('wincent/terminus')
 call Plug('w0rp/ale')
 
+call Plug('neoclide/coc.nvim', {'branch': 'release'})
+
 call Plug('vim-airline/vim-airline')
 call Plug('vim-airline/vim-airline-themes')
 call Plug('lambdalisue/battery.vim')
@@ -92,6 +94,8 @@ call Plug('vito-c/jq.vim')
 call Plug('fladson/vim-kitty')
 
 call Plug('fpob/nette.vim')
+
+call Plug('leafOfTree/vim-svelte-plugin')
 
 if executable('task')
   call Plug('farseer90718/vim-taskwarrior')

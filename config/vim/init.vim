@@ -86,6 +86,8 @@ let g:airline#extensions#battery#enabled = 1
 
 let g:csv_no_conceal = 1
 
+let vim_svelte_plugin_use_typescript = 1
+
 let g:LatexBox_Folding = 1
 let g:NERDTreeHijackNetrw = 1
 
