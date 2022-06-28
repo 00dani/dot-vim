@@ -101,6 +101,8 @@ if executable('task')
   call Plug('farseer90718/vim-taskwarrior')
 endif
 
+call Plug('pedrohdz/vim-yaml-folds')
+
 call Plug('alx741/yesod.vim')
 call Plug('pbrisbin/vim-syntax-shakespeare')
 
