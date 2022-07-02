@@ -69,8 +69,8 @@ else
   set number
 endif
 
-for dir in ['backup', 'swap', 'undo']
-  EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir)
+for dir_name in ['backup', 'swap', 'undo']
+  EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir_name)
 endfor
 
 set backupdir=.,$XDG_STATE_HOME/vim/backup
