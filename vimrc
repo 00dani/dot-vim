@@ -1,6 +1,13 @@
-for [s:var, s:value] in items({'XDG_CONFIG_HOME': '~/.config', 'XDG_CACHE_HOME': '~/.cache', 'XDG_DATA_HOME': '~/.local/share', 'XDG_STATE_HOME': '~/.local/state'})
-  if (empty(eval('$' . s:var)))
-    exec 'let $' . s:var . ' = expand(s:value)'
+vim9script
+const xdg = {
+  XDG_CONFIG_HOME: '~/.config',
+  XDG_CACHE_HOME: '~/.cache',
+  XDG_DATA_HOME: '~/.local/share',
+  XDG_STATE_HOME: '~/.local/state',
+}
+for [key, default] in items(xdg)
+  if !has_key(environ(), key)
+    setenv(key, expand(default))
   endif
 endfor
 
@@ -9,7 +16,7 @@ set viminfo+=n$XDG_STATE_HOME/vim/viminfo
 if exists('+packpath')
   set packpath^=$XDG_CONFIG_HOME/vim,$XDG_CACHE_HOME/vim
 endif
-let g:netrw_home = $XDG_CACHE_HOME . '/vim/netrw'
+g:netrw_home = $XDG_CACHE_HOME .. '/vim/netrw'
 
-let $MYVIMRC = $XDG_CONFIG_HOME . '/vim/init.vim'
+$MYVIMRC = $XDG_CONFIG_HOME .. '/vim/init.vim'
 source $MYVIMRC
