@@ -53,7 +53,9 @@ set linebreak showbreak=↩
 set modelines=5
 set showcmd
 set wildmode=longest,full
-silent! set wildoptions+=pum
+if has('patch-8.2.4325')
+  set wildoptions+=pum
+endif
 
 set tabstop=2 shiftwidth=2
 
