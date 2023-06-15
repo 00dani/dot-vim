@@ -31,6 +31,10 @@ g:gruvbox_improved_strings = 1
 g:gruvbox_improved_warnings = 1
 
 if has('gui_running') || has('termguicolors')
+  if $COLORTERM == 'truecolor'
+    &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  endif
   set termguicolors
   silent! packadd gruvbox
   g:airline_theme = 'gruvbox'
