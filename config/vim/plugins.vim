@@ -43,8 +43,7 @@ minpac#add('tpope/vim-unimpaired')
 minpac#add('wincent/loupe')
 minpac#add('wincent/terminus')
 minpac#add('w0rp/ale')
-
-minpac#add('neoclide/coc.nvim', {branch: 'release'})
+minpac#add('yegappan/lsp')
 
 minpac#add('vim-airline/vim-airline')
 minpac#add('vim-airline/vim-airline-themes')
@@ -61,7 +60,6 @@ minpac#add('ehamberg/vim-cute-python')
 minpac#add('Glench/Vim-Jinja2-Syntax')
 minpac#add('tweekmonster/braceless.vim')
 
-minpac#add('ternjs/tern_for_vim', {do: () => async#job#start(['npm', 'install'], {})})
 minpac#add('vito-c/jq.vim')
 
 minpac#add('fladson/vim-kitty')

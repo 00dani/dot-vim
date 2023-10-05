@@ -103,3 +103,7 @@ g:mucomplete#can_complete = {
     omni: (t) => strlen(&l:omnifunc) > 0 && t =~# '\m\k\%(\k\|\.\)$'
   }
 }
+
+set keywordprg=:LspHover
+
+source $XDG_CONFIG_HOME/vim/lsp.vim
