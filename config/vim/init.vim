@@ -98,5 +98,10 @@ g:mucomplete#can_complete = {
 }
 
 import "./lsp.vim"
-set keywordprg=:LspHover
 lsp.LazyConfigure()
+
+set keywordprg=:LspHover
+nnoremap gd <Cmd>LspGotoDefinition<CR>
+nnoremap gi <Cmd>LspGotoImpl<CR>
+xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
+xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
