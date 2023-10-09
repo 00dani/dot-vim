@@ -30,6 +30,9 @@ endif
 
 set background=dark
 g:gruvbox_transp_bg = 1
+g:gruvbox_italicize_strings = 0
+g:gruvbox_filetype_hi_groups = 1
+g:gruvbox_plugin_hi_groups = 1
 g:airline_theme = 'gruvbox8'
 colorscheme gruvbox8
 
