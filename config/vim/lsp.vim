@@ -75,25 +75,54 @@ const lspOptions = {
 
 command! -nargs=0 -bar LspInstall Install()
 
+def InstalledServers(): list<dict<any>>
+  return lspServers->deepcopy()->filter((_, server): bool => executable(server.path) == 1)
+enddef
+
+def MissingServers(): list<dict<any>>
+  return lspServers->deepcopy()->filter((_, server): bool => executable(server.path) == 0)
+enddef
+
 export def LazyConfigure(): void
   autocmd VimEnter * ++once Configure()
 enddef
 
 export def Configure(): void
-  final installedServers = lspServers->deepcopy()->filter((_, server) => executable(server.path) == 1)
+  final installedServers = InstalledServers()
   if len(lspServers) != len(installedServers)
-    echo (len(lspServers) - len(installedServers)) "language servers are configured, but not installed. You may want to run :LspInstall."
+    echo $'{len(lspServers) - len(installedServers)} language servers are configured, but not installed. You may want to run :LspInstall.'
   endif
   g:LspAddServer(installedServers)
   g:LspOptionsSet(lspOptions)
 enddef
 
 export def Install(): void
-  const installScript = lspServers->copy()
-    ->filter((_, server) => executable(server.path) == 0)
-    ->map((_, server) => server.install)
-    ->add("exit\n")
-    ->join("\n")
+  const missingServers = MissingServers()
+  if empty(missingServers)
+    echo $"All {len(lspServers)} configured language servers are already installed."
+    return
+  endif
 
-  term_start('sh')->term_sendkeys(installScript)
+  # The installScript runs every missing server's install command, regardless
+  # of whether any fail in the process. The script's exit status is the number
+  # of failed installations.
+  const installScript = "failed=0\n" .. missingServers->copy()
+    ->map((_, server): string => $"\{ {server.install}; \} || failed=$((failed + 1))")
+    ->join("\n") ..  "\nexit $failed\n"
+
+  const term = term_start('sh', {exit_cb: (job: job, status: number): void => {
+    # If any installations failed, keep the terminal window open so we can
+    # troubleshoot. If they all worked fine, close the terminal and reload the
+    # LSP configuration.
+    if status == 0
+      execute 'bdelete' job->ch_getbufnr('out')
+      Configure()
+    endif
+  }})
+
+  # We prefer term_sendkeys() over sh -c because that will display each
+  # command in the terminal as it's being executed, making it easier to
+  # understand exactly what the install script is doing.
+  term->term_sendkeys(installScript)
 enddef
+
