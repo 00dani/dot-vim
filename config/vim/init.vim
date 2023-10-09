@@ -20,28 +20,18 @@ if !isdirectory($XDG_CACHE_HOME .. '/vim/pack')
   PackUpdate
 endif
 
-augroup transparent_term
-  autocmd!
-  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-augroup END
-
-set background=dark
-g:gruvbox_italic = 1
-g:gruvbox_improved_strings = 1
-g:gruvbox_improved_warnings = 1
-
 if has('gui_running') || has('termguicolors')
   if $COLORTERM == 'truecolor'
     &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
     &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
   endif
   set termguicolors
-  silent! packadd gruvbox
-  g:airline_theme = 'gruvbox'
-  colorscheme gruvbox
-else
-  colorscheme inkpot
 endif
+
+set background=dark
+g:gruvbox_transp_bg = 1
+g:airline_theme = 'gruvbox8'
+colorscheme gruvbox8
 
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>

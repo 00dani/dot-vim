@@ -14,8 +14,7 @@ minpac#add('k-takata/minpac', {type: 'opt'})
 minpac#add('tpope/vim-sensible')
 minpac#add('prabirshrestha/async.vim')
 
-minpac#add('ciaranm/inkpot', {type: 'opt', do: 'colorscheme inkpot'})
-minpac#add('morhetz/gruvbox', {type: 'opt'})
+minpac#add('lifepillar/vim-gruvbox8')
 
 minpac#add('direnv/direnv.vim')
 minpac#add('editorconfig/editorconfig-vim')
