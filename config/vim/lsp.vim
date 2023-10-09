@@ -10,6 +10,14 @@ const lspServers = [
   },
 
   {
+    name: 'lua-language-server',
+    filetype: 'lua',
+    path: '/usr/local/bin/lua-language-server',
+    args: [],
+    install: ['brew', 'install', 'lua-language-server'],
+  },
+
+  {
     name: 'tilt-lsp',
     filetype: 'bzl',
     path: '/usr/local/bin/tilt',
