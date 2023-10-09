@@ -65,18 +65,26 @@ const lspOptions = {
   aleSupport: true,
 }
 
+command! -nargs=0 -bar LspInstall Install()
+
 export def LazyConfigure(): void
   autocmd VimEnter * ++once Configure()
 enddef
 
 export def Configure(): void
-  g:LspAddServer(lspServers->deepcopy()->filter((_, server) => executable(server.path) == 1))
+  final installedServers = lspServers->deepcopy()->filter((_, server) => executable(server.path) == 1)
+  if len(lspServers) != len(installedServers)
+    echo (len(lspServers) - len(installedServers)) "language servers are configured, but not installed. You may want to run :LspInstall."
+  endif
+  g:LspAddServer(installedServers)
   g:LspOptionsSet(lspOptions)
 enddef
 
 export def Install(): void
-  # TODO: work out a way nicer approach to automatically installing any
-  # missing language servers. Maybe use a command or something.
+  # TODO: running all installations in parallel doesn't work super well,
+  # because some package managers use an exclusive lock while they're running.
+  # Plus you don't get feedback on installation progress. Perhaps use
+  # term_start() instead, so installs run in series and are visible on screen?
   const missing = lspServers->copy()
     ->filter((_, server) => executable(server.path) == 0)
   const jobs = missing->copy()
