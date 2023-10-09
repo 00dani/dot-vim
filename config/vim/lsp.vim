@@ -30,7 +30,7 @@ const lspServers = [
     filetype: ['javascript', 'typescript'],
     path: '/usr/local/bin/typescript-language-server',
     args: ['--stdio'],
-    install: ['brew', 'install', 'typescript-language-server'],
+    install: 'brew install typescript-language-server',
   },
 
   {
