@@ -6,7 +6,7 @@ const lspServers = [
     filetype: 'dockerfile',
     path: expand('~/.local/bin/docker-langserver'),
     args: ['--stdio'],
-    install: ['npm', 'install', '-g', 'dockerfile-language-server-nodejs'],
+    install: 'npm install -g dockerfile-language-server-nodejs',
   },
 
   {
@@ -14,7 +14,7 @@ const lspServers = [
     filetype: 'lua',
     path: '/usr/local/bin/lua-language-server',
     args: [],
-    install: ['brew', 'install', 'lua-language-server'],
+    install: 'brew install lua-language-server',
   },
 
   {
@@ -22,7 +22,7 @@ const lspServers = [
     filetype: 'bzl',
     path: '/usr/local/bin/tilt',
     args: ['lsp', 'start'],
-    install: ['brew', 'install', 'tilt'],
+    install: 'brew install tilt',
   },
 
   {
@@ -41,7 +41,7 @@ const lspServers = [
     initializationOptions: {
       'language_server_configuration.auto_config': false,
     },
-    install: ['bash', '-c', 'curl -Lo phpactor https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar && chmod u+x phpactor && mv phpactor ~/bin'],
+    install: 'curl -Lo phpactor https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar && chmod u+x phpactor && mv phpactor ~/bin',
   },
 
   {
@@ -49,7 +49,7 @@ const lspServers = [
     filetype: 'python',
     path: '/usr/local/bin/pylsp',
     args: [],
-    install: ['brew', 'install', 'python-lsp-server'],
+    install: 'brew install python-lsp-server',
   },
 
   {
@@ -57,7 +57,7 @@ const lspServers = [
     filetype: 'ruby',
     path: '/usr/local/bin/solargraph',
     args: ['stdio'],
-    install: ['brew', 'install', 'solargraph'],
+    install: 'brew install solargraph',
   },
 
   {
@@ -65,7 +65,7 @@ const lspServers = [
     filetype: 'vim',
     path: expand('~/.local/bin/vim-language-server'),
     args: ['--stdio'],
-    install: ['npm', 'install', '-g', 'vim-language-server'],
+    install: 'npm install -g vim-language-server',
   },
 ]
 
@@ -89,13 +89,11 @@ export def Configure(): void
 enddef
 
 export def Install(): void
-  # TODO: running all installations in parallel doesn't work super well,
-  # because some package managers use an exclusive lock while they're running.
-  # Plus you don't get feedback on installation progress. Perhaps use
-  # term_start() instead, so installs run in series and are visible on screen?
-  const missing = lspServers->copy()
+  const installScript = lspServers->copy()
     ->filter((_, server) => executable(server.path) == 0)
-  const jobs = missing->copy()
-    ->mapnew((_, server) => async#job#start(server.install, {normalize: 'raw'}))
-  async#job#wait(jobs)
+    ->map((_, server) => server.install)
+    ->add("exit\n")
+    ->join("\n")
+
+  term_start('sh')->term_sendkeys(installScript)
 enddef
