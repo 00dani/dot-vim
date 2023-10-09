@@ -104,6 +104,6 @@ g:mucomplete#can_complete = {
   }
 }
 
+import "./lsp.vim"
 set keywordprg=:LspHover
-
-source $XDG_CONFIG_HOME/vim/lsp.vim
+lsp.LazyConfigure()

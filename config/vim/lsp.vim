@@ -65,17 +65,21 @@ const lspOptions = {
   aleSupport: true,
 }
 
-autocmd VimEnter * ++once {
+export def LazyConfigure(): void
+  autocmd VimEnter * ++once Configure()
+enddef
+
+export def Configure(): void
+  g:LspAddServer(lspServers->deepcopy()->filter((_, server) => executable(server.path) == 1))
+  g:LspOptionsSet(lspOptions)
+enddef
+
+export def Install(): void
   # TODO: work out a way nicer approach to automatically installing any
   # missing language servers. Maybe use a command or something.
   const missing = lspServers->copy()
-    ->filter((_, server) => !executable(server.path))
+    ->filter((_, server) => executable(server.path) == 0)
   const jobs = missing->copy()
     ->mapnew((_, server) => async#job#start(server.install, {normalize: 'raw'}))
   async#job#wait(jobs)
-  # :call is required here because these functions from vim-lsp won't be
-  # loaded yet when this file is parsed by Vim, so you get a "function not
-  # found" error if you try to call them the short way.
-  call LspAddServer(lspServers->deepcopy()->filter((_, server) => executable(server.path)))
-  call LspOptionsSet(lspOptions)
-}
+enddef
