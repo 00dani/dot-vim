@@ -45,6 +45,14 @@ const lspServers = [
   },
 
   {
+    name: 'solargraph',
+    filetype: 'ruby',
+    path: '/usr/local/bin/solargraph',
+    args: ['stdio'],
+    install: ['brew', 'install', 'solargraph'],
+  },
+
+  {
     name: 'vim-language-server',
     filetype: 'vim',
     path: expand('~/.local/bin/vim-language-server'),
