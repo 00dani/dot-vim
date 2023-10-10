@@ -146,4 +146,3 @@ export def Install(): void
   # understand exactly what the install script is doing.
   term->term_sendkeys(installScript)
 enddef
-
