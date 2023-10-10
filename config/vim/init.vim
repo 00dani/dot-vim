@@ -8,6 +8,13 @@ def EnsureDir(dir: string): void
   endif
 enddef
 
+def PrependIfVisible(status: string, symbol: string): string
+	if empty(status)
+		return ''
+	endif
+	return symbol .. status
+enddef
+
 # These are really clever - minpac will actually be loaded on the fly only
 # when you need to update or clean your packages, rather than all the time.
 command! PackUpdate source $XDG_CONFIG_HOME/vim/plugins.vim | minpac#update()
@@ -28,12 +35,39 @@ if has('gui_running') || has('termguicolors')
   set termguicolors
 endif
 
+g:battery#component_format = '%s %v%%'
+
+set noshowmode
+g:lightline = {
+	colorscheme: 'gruvbox8',
+	separator: {left: "\ue0b0", right: "\ue0b2"},
+	subseparator: {left: "\ue0b1", right: "\ue0b3"},
+	active: {
+		left: [['mode', 'paste'], ['git_branch', 'battery'], ['readonly', 'filename', 'modified']],
+		right: [['lineinfo'], ['percent'], ['fileencoding', 'filetype']],
+	},
+	component: {
+		filetype: '%{&ft}[%{&ff}]',
+		lineinfo: '%3l:%-2c',
+	},
+	component_function: {
+		battery: 'battery#component',
+	},
+	component_funcref: {
+		git_branch: () => g:FugitiveHead()->PrependIfVisible(' '),
+	}
+}
+
+# Allow Funcrefs, especially lambdas, to be used as lightline components. :)
+for k in keys(g:lightline.component_funcref)
+	g:lightline.component_function[k] = $'lightline.component_funcref.{k}'
+endfor
+
 set background=dark
 g:gruvbox_transp_bg = 1
 g:gruvbox_italicize_strings = 0
 g:gruvbox_filetype_hi_groups = 1
 g:gruvbox_plugin_hi_groups = 1
-g:airline_theme = 'gruvbox8'
 colorscheme gruvbox8
 
 inoremap jj <Esc>
@@ -76,9 +110,6 @@ if exists('+undofile')
   set undofile
   set undodir=$XDG_STATE_HOME/vim/undo
 endif
-
-g:airline_powerline_fonts = 1
-g:airline#extensions#battery#enabled = 1
 
 g:csv_no_conceal = 1
 

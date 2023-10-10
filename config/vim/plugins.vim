@@ -14,7 +14,7 @@ minpac#add('k-takata/minpac', {type: 'opt'})
 minpac#add('tpope/vim-sensible')
 minpac#add('prabirshrestha/async.vim')
 
-minpac#add('lifepillar/vim-gruvbox8', {type: 'opt'})
+minpac#add('lifepillar/vim-gruvbox8')
 
 minpac#add('direnv/direnv.vim')
 minpac#add('editorconfig/editorconfig-vim')
@@ -46,8 +46,7 @@ minpac#add('w0rp/ale')
 minpac#add('yegappan/lsp')
 minpac#add('00dani/SchemaStore.vim')
 
-minpac#add('vim-airline/vim-airline')
-minpac#add('vim-airline/vim-airline-themes')
+minpac#add('itchyny/lightline.vim')
 minpac#add('lambdalisue/battery.vim')
 
 minpac#add('alvan/vim-closetag')
