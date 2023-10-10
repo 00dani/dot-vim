@@ -42,7 +42,9 @@ minpac#add('tpope/vim-unimpaired')
 minpac#add('wincent/loupe')
 minpac#add('wincent/terminus')
 minpac#add('w0rp/ale')
+
 minpac#add('yegappan/lsp')
+minpac#add('00dani/SchemaStore.vim')
 
 minpac#add('vim-airline/vim-airline')
 minpac#add('vim-airline/vim-airline-themes')

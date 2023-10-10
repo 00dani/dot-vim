@@ -77,6 +77,19 @@ const lspServers = [
   },
 
   {
+    name: 'vscode-json-language-server',
+    filetype: ['json', 'jsonc'],
+    path: expand('~/.local/bin/vscode-json-language-server'),
+    args: ['--stdio'],
+    workspaceConfig: {json: {
+      format: {enable: true},
+			validate: {enable: true},
+      schemas: g:SchemaStore#Schemata(),
+    }},
+    install: 'npm install -g vscode-langservers-extracted',
+  },
+
+  {
     name: 'yaml-language-server',
     filetype: 'yaml',
     path: expand('~/.local/bin/yaml-language-server'),
