@@ -60,6 +60,7 @@ minpac#add('Glench/Vim-Jinja2-Syntax')
 minpac#add('tweekmonster/braceless.vim')
 
 minpac#add('vito-c/jq.vim')
+minpac#add('NoahTheDuke/vim-just')
 
 minpac#add('fladson/vim-kitty')
 
