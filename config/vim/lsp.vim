@@ -18,6 +18,14 @@ const lspServers = [
   },
 
   {
+    name: 'taplo',
+    filetype: 'toml',
+    path: '/usr/local/bin/taplo',
+    args: ['lsp', 'stdio'],
+    install: 'brew install taplo',
+  },
+
+  {
     name: 'tilt-lsp',
     filetype: 'bzl',
     path: '/usr/local/bin/tilt',
@@ -67,10 +75,23 @@ const lspServers = [
     args: ['--stdio'],
     install: 'npm install -g vim-language-server',
   },
+
+  {
+    name: 'yaml-language-server',
+    filetype: 'yaml',
+    path: expand('~/.local/bin/yaml-language-server'),
+    args: ['--stdio'],
+    workspaceConfig: {yaml: {
+      format: {enable: true, singleQuote: true},
+      schemaStore: {enable: true, url: 'https://www.schemastore.org/api/json/catalog.json'},
+    }},
+    install: 'npm install -g yaml-language-server',
+  },
 ]
 
 const lspOptions = {
   aleSupport: true,
+  ignoreMissingServer: true,
 }
 
 command! -nargs=0 -bar LspInstall Install()
