@@ -36,6 +36,7 @@ colorscheme gruvbox8
 inoremap jj <Esc>
 nnoremap <C-t> :Files<CR>
 
+packadd! editorconfig
 
 if exists('+belloff')
   set belloff+=ctrlg

@@ -16,8 +16,11 @@ minpac#add('prabirshrestha/async.vim')
 
 minpac#add('lifepillar/vim-gruvbox8')
 
+if !isdirectory($VIMRUNTIME .. '/pack/dist/opt/editorconfig')
+  minpac#add('editorconfig/editorconfig-vim')
+endif
+
 minpac#add('direnv/direnv.vim')
-minpac#add('editorconfig/editorconfig-vim')
 minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
 minpac#add('junegunn/vim-easy-align')
