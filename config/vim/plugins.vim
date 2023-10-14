@@ -1,11 +1,11 @@
 vim9script
 silent! packadd minpac
 if !exists('g:loaded_minpac')
-  silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
-  augroup minpac {
-    autocmd!
-    autocmd VimEnter * call minpac#update()
-  }
+	silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
+	augroup minpac {
+		autocmd!
+		autocmd VimEnter * call minpac#update()
+	}
 endif
 packadd minpac
 
@@ -17,7 +17,7 @@ minpac#add('prabirshrestha/async.vim')
 minpac#add('lifepillar/vim-gruvbox8')
 
 if !isdirectory($VIMRUNTIME .. '/pack/dist/opt/editorconfig')
-  minpac#add('editorconfig/editorconfig-vim')
+	minpac#add('editorconfig/editorconfig-vim')
 endif
 
 minpac#add('direnv/direnv.vim')
@@ -74,7 +74,7 @@ minpac#add('fpob/nette.vim')
 minpac#add('leafOfTree/vim-svelte-plugin')
 
 if executable('task')
-  minpac#add('farseer90718/vim-taskwarrior')
+	minpac#add('farseer90718/vim-taskwarrior')
 endif
 
 minpac#add('pedrohdz/vim-yaml-folds')
@@ -83,8 +83,8 @@ minpac#add('alx741/yesod.vim')
 minpac#add('pbrisbin/vim-syntax-shakespeare')
 
 if has('macunix')
-  minpac#add('rizzatti/dash.vim')
-  # We rename this plugin to make sure it loads AFTER vim-polyglot,
-  # since it won't work properly if it's loaded first.
-  minpac#add('itspriddle/vim-marked', {name: 'zzvim-marked'})
+	minpac#add('rizzatti/dash.vim')
+	# We rename this plugin to make sure it loads AFTER vim-polyglot,
+	# since it won't work properly if it's loaded first.
+	minpac#add('itspriddle/vim-marked', {name: 'zzvim-marked'})
 endif
