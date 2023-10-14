@@ -75,6 +75,10 @@ if exists('+undofile')
 	set undodir=$XDG_STATE_HOME/vim/undo
 endif
 
+# This setup installs both tpope/vim-sensible and tpope/vim-sleuth, so we
+# don't also need vim-polyglot to provide that same functionality.
+g:polyglot_disabled = ['sensible', 'autoindent']
+
 g:csv_no_conceal = 1
 
 g:vim_svelte_plugin_use_typescript = 1
