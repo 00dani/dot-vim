@@ -46,8 +46,9 @@ minpac#add('w0rp/ale')
 minpac#add('yegappan/lsp')
 minpac#add('00dani/SchemaStore.vim')
 
-minpac#add('itchyny/lightline.vim')
+minpac#add('rbong/vim-crystalline')
 minpac#add('lambdalisue/battery.vim')
+minpac#add('lambdalisue/nerdfont.vim')
 
 minpac#add('alvan/vim-closetag')
 minpac#add('LaTeX-Box-Team/LaTeX-Box')

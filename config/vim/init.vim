@@ -3,16 +3,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 def EnsureDir(dir: string): void
-  if filewritable(dir) != 2
-    mkdir(dir, "p", 0700)
-  endif
-enddef
-
-def PrependIfVisible(status: string, symbol: string): string
-	if empty(status)
-		return ''
-	endif
-	return symbol .. status
+	mkdir(dir, "p", 0700)
 enddef
 
 # These are really clever - minpac will actually be loaded on the fly only
@@ -34,34 +25,6 @@ if has('gui_running') || has('termguicolors')
   endif
   set termguicolors
 endif
-
-g:battery#component_format = '%s %v%%'
-
-set noshowmode
-g:lightline = {
-	colorscheme: 'gruvbox8',
-	separator: {left: "\ue0b0", right: "\ue0b2"},
-	subseparator: {left: "\ue0b1", right: "\ue0b3"},
-	active: {
-		left: [['mode', 'paste'], ['git_branch', 'battery'], ['readonly', 'filename', 'modified']],
-		right: [['lineinfo'], ['percent'], ['fileencoding', 'filetype']],
-	},
-	component: {
-		filetype: '%{&ft}[%{&ff}]',
-		lineinfo: '%3l:%-2c',
-	},
-	component_function: {
-		battery: 'battery#component',
-	},
-	component_funcref: {
-		git_branch: () => g:FugitiveHead()->PrependIfVisible(' '),
-	}
-}
-
-# Allow Funcrefs, especially lambdas, to be used as lightline components. :)
-for k in keys(g:lightline.component_funcref)
-	g:lightline.component_function[k] = $'lightline.component_funcref.{k}'
-endfor
 
 set background=dark
 g:gruvbox_transp_bg = 1
@@ -127,6 +90,9 @@ g:mucomplete#can_complete = {
     omni: (t) => strlen(&l:omnifunc) > 0 && t =~# '\m\k\%(\k\|\.\)$'
   }
 }
+
+import "./statusline.vim"
+statusline.Init()
 
 import "./lsp.vim"
 lsp.LazyConfigure()
