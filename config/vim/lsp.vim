@@ -118,7 +118,10 @@ def MissingServers(): list<dict<any>>
 enddef
 
 export def LazyConfigure(): void
-	autocmd VimEnter * ++once Configure()
+	augroup lspLazyConfigure
+		autocmd!
+		autocmd VimEnter * ++once Configure()
+	augroup END
 enddef
 
 export def Configure(): void

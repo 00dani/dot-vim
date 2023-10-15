@@ -4,7 +4,7 @@ if !exists('g:loaded_minpac')
 	silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
 	augroup minpac
 		autocmd!
-		autocmd VimEnter * call minpac#update()
+		autocmd VimEnter * ++once minpac#update()
 	augroup END
 endif
 packadd minpac
