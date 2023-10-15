@@ -1,4 +1,8 @@
 vim9script
+if &compatible
+	set nocompatible
+endif
+
 const xdg = {
 	XDG_CONFIG_HOME: '~/.config',
 	XDG_CACHE_HOME: '~/.cache',
