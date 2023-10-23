@@ -18,6 +18,14 @@ const lspServers = [
 	},
 
 	{
+		name: 'PerlNavigator',
+		filetype: 'perl',
+		path: expand('~/.local/bin/perlnavigator'),
+		args: ['--stdio'],
+		install: 'npm install -g perlnavigator-server',
+	},
+
+	{
 		name: 'taplo',
 		filetype: 'toml',
 		path: '/usr/local/bin/taplo',
