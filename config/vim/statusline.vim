@@ -2,6 +2,13 @@ vim9script
 
 import autoload ($XDG_CACHE_HOME .. '/vim/pack/minpac/start/vim-crystalline/autoload/crystalline.vim') as cr
 
+def DropIfDefault(status: string, default: string): string
+	if status == default
+		return ''
+	endif
+	return status
+enddef
+
 def PrependIfVisible(status: string, prefix: string): string
 	if empty(status)
 		return ''
@@ -41,7 +48,7 @@ def StatuslineLeft(window: number, inactive: bool): string
 	const bufnr = window->winbufnr()
 	const b = bufnr->getbufvar('&')
 	const fileName = [
-		bufname(bufnr)->g:nerdfont#find()->AppendIfVisible(' '),
+		bufname(bufnr)->g:nerdfont#find()->DropIfDefault(g:nerdfont#default)->AppendIfVisible(' '),
 		b.buftype == '' ? '%t' : '%f',
 		b.modifiable && b.modified ? cr.ModeHiItem('Modified') .. '+' .. cr.ModeHiItem('Fill') : '',
 		b.readonly ? " \uf023" : '', # nf-fa-lock
@@ -78,7 +85,6 @@ enddef
 
 def ConfigurePlugins(): void
 	g:battery#component_format = '%s %v%%'
-	g:nerdfont#default = ''
 	g:crystalline_theme = 'gruvbox8'
 enddef
 
@@ -107,12 +113,13 @@ def InitTab()
 			width += 2
 		endif
 
-		const icon = bufname(bufnr)->g:nerdfont#find()->PrependIfVisible(' ')
-		if width + strchars(icon) >= maxWidth
+		const icon = bufname(bufnr)->g:nerdfont#find()->DropIfDefault(g:nerdfont#default)->PrependIfVisible(' ')
+		const iconWidth = strchars(icon)
+		if width + iconWidth >= maxWidth
 			return [tabDisplay, width]
 		endif
 
-		return [icon .. tabDisplay, width + strchars(icon)]
+		return [icon .. tabDisplay, width + iconWidth]
 	enddef
 enddef
 
