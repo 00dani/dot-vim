@@ -1,5 +1,7 @@
 vim9script
 
+import './tools/perl.vim'
+
 const lspServers = [
 	{
 		name: 'dockerfile-langserver',
@@ -24,6 +26,8 @@ const lspServers = [
 		args: ['--stdio'],
 		install: 'npm install -g perlnavigator-server',
 	},
+
+	perl.Lsp('Perl::LanguageServer', ['-e', 'Perl::LanguageServer::run']),
 
 	{
 		name: 'taplo',
@@ -128,12 +132,16 @@ def ToStringSet(stringList: list<string>): dict<bool>
 	return stringSet
 enddef
 
+def IsInstalled(server: dict<any>): bool
+	return server->has_key('installed') ? server.installed() : executable(server.path) == 1
+enddef
+
 def InstalledServers(): list<dict<any>>
-	return lspServers->deepcopy()->filter((_, server): bool => executable(server.path) == 1)
+	return lspServers->deepcopy()->filter((_, server): bool => server->IsInstalled())
 enddef
 
 def MissingServers(): list<dict<any>>
-	return lspServers->deepcopy()->filter((_, server): bool => executable(server.path) == 0)
+	return lspServers->deepcopy()->filter((_, server): bool => !server->isInstalled())
 enddef
 
 def ListMissingServers(argLead: string, cmdLine: string, cursorPos: number): list<string>
