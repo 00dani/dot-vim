@@ -115,7 +115,18 @@ const lspOptions = {
 	ignoreMissingServer: true,
 }
 
-command! -nargs=0 -bar LspInstall Install()
+command! -nargs=* -complete=customlist,ListMissingServers -bar LspInstall Install(<f-args>)
+
+# Convert a list of strings to a dictionary containing those same strings as
+# keys, approximating a set type. You can use has_key() to test set membership
+# on the result, rather than index().
+def ToStringSet(stringList: list<string>): dict<bool>
+	var stringSet: dict<bool>
+	for string in stringList
+		stringSet[string] = true
+	endfor
+	return stringSet
+enddef
 
 def InstalledServers(): list<dict<any>>
 	return lspServers->deepcopy()->filter((_, server): bool => executable(server.path) == 1)
@@ -123,6 +134,10 @@ enddef
 
 def MissingServers(): list<dict<any>>
 	return lspServers->deepcopy()->filter((_, server): bool => executable(server.path) == 0)
+enddef
+
+def ListMissingServers(argLead: string, cmdLine: string, cursorPos: number): list<string>
+	return MissingServers()->mapnew((_, server): string => server.name)
 enddef
 
 export def LazyConfigure(): void
@@ -133,6 +148,8 @@ export def LazyConfigure(): void
 enddef
 
 export def Configure(): void
+	# We have to use final rather than const because LspAddServer() assumes it can
+	# modify the dicts it gets, rather than making a fresh copy to mess with.
 	final installedServers = InstalledServers()
 	if len(lspServers) != len(installedServers)
 		echo $'{len(lspServers) - len(installedServers)} language servers are configured, but not installed. You may want to run :LspInstall.'
@@ -141,17 +158,23 @@ export def Configure(): void
 	g:LspOptionsSet(lspOptions)
 enddef
 
-export def Install(): void
+export def Install(...serverNames: list<string>): void
 	const missingServers = MissingServers()
+
 	if empty(missingServers)
 		echo $"All {len(lspServers)} configured language servers are already installed."
 		return
 	endif
 
-	# The installScript runs every missing server's install command, regardless
-	# of whether any fail in the process. The script's exit status is the number
-	# of failed installations.
-	const installScript = "failed=0\n" .. missingServers->copy()
+	const serverNamesSet = ToStringSet(serverNames)
+	const serversToInstall = empty(serverNamesSet)
+		? missingServers
+		: missingServers->copy()->filter((_, server): bool => serverNamesSet->has_key(server.name))
+
+	# The installScript runs every server's install command, regardless of
+	# whether any fail in the process. The script's exit status is the number of
+	# failed installations.
+	const installScript = "failed=0\n" .. serversToInstall->copy()
 		->map((_, server): string => $"\{ {server.install}; \} || failed=$((failed + 1))")
 		->join("\n") ..  "\nexit $failed\n"
 
