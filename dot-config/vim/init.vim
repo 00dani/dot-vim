@@ -105,7 +105,7 @@ import "./statusline.vim"
 statusline.Init()
 
 import "./lsp.vim"
-lsp.LazyConfigure()
+lsp.Configure()
 
 set formatexpr=lsp#lsp#FormatExpr()
 set keywordprg=:LspHover

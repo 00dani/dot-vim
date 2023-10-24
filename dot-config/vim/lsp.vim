@@ -140,13 +140,6 @@ def ListMissingServers(argLead: string, cmdLine: string, cursorPos: number): lis
 	return MissingServers()->mapnew((_, server): string => server.name)
 enddef
 
-export def LazyConfigure(): void
-	augroup lspLazyConfigure
-		autocmd!
-		autocmd VimEnter * ++once Configure()
-	augroup END
-enddef
-
 export def Configure(): void
 	# We have to use final rather than const because LspAddServer() assumes it can
 	# modify the dicts it gets, rather than making a fresh copy to mess with.
@@ -154,8 +147,8 @@ export def Configure(): void
 	if len(lspServers) != len(installedServers)
 		echo $'{len(lspServers) - len(installedServers)} language servers are configured, but not installed. You may want to run :LspInstall.'
 	endif
-	g:LspAddServer(installedServers)
-	g:LspOptionsSet(lspOptions)
+	g:lsp#lsp#AddServer(installedServers)
+	g:lsp#options#OptionsSet(lspOptions)
 enddef
 
 export def Install(...serverNames: list<string>): void
