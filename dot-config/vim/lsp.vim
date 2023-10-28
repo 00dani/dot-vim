@@ -153,8 +153,17 @@ export def Configure(): void
 	# modify the dicts it gets, rather than making a fresh copy to mess with.
 	final installedServers = InstalledServers()
 	if len(lspServers) != len(installedServers)
-		echo $'{len(lspServers) - len(installedServers)} language servers are configured, but not installed. You may want to run :LspInstall.'
+		# Since this code runs during Vim initialisation, this message would
+		# normally pause Vim's startup so the user can read it. We don't want
+		# that, so we're gonna delay it using an autocmd.
+		const missingCount = len(lspServers) - len(installedServers)
+		const warn = $'{missingCount} language server{missingCount > 1 ? "s are" : " is"} configured, but not installed. You may want to run :LspInstall.'
+		augroup dot/vim/lsp.vim
+			autocmd!
+			exe $'autocmd VimEnter * ++once echo "{escape(warn, '"\\')}"'
+		augroup END
 	endif
+
 	g:lsp#lsp#AddServer(installedServers)
 	g:lsp#options#OptionsSet(lspOptions)
 enddef
