@@ -1,27 +1,7 @@
 vim9script
 
 import autoload ($XDG_CACHE_HOME .. '/vim/pack/minpac/start/vim-crystalline/autoload/crystalline.vim') as cr
-
-def DropIfDefault(status: string, default: string): string
-	if status == default
-		return ''
-	endif
-	return status
-enddef
-
-def PrependIfVisible(status: string, prefix: string): string
-	if empty(status)
-		return ''
-	endif
-	return prefix .. status
-enddef
-
-def AppendIfVisible(status: string, affix: string): string
-	if empty(status)
-		return ''
-	endif
-	return status .. affix
-enddef
+import './tools/strings.vim' as st
 
 def StatuslineSection(seps: number, group: string, components: list<string>): string
 	const hiGroup = cr.ModeGroup(group)
@@ -34,21 +14,21 @@ def GitStatus(): string
 		return ''
 	endif
 
-	const branch = g:FugitiveHead()->PrependIfVisible("\ue0a0 ") # nf-pl-branch
+	const branch = g:FugitiveHead()->st.PrependIfVisible("\ue0a0 ") # nf-pl-branch
 	if !empty(branch)
 		return branch
 	endif
 
 	return g:FugitiveHead(7)
-		->PrependIfVisible("\Uf135e (") # nf-md-head
-		->AppendIfVisible(")")
+		->st.PrependIfVisible("\Uf135e (") # nf-md-head
+		->st.AppendIfVisible(")")
 enddef
 
 def StatuslineLeft(window: number, inactive: bool): string
 	const bufnr = window->winbufnr()
 	const b = bufnr->getbufvar('&')
 	const fileName = [
-		bufname(bufnr)->g:nerdfont#find()->DropIfDefault(g:nerdfont#default)->AppendIfVisible(' '),
+		bufname(bufnr)->g:nerdfont#find()->st.DropIfDefault(g:nerdfont#default)->st.AppendIfVisible(' '),
 		b.buftype == '' ? '%t' : '%f',
 		b.modifiable && b.modified ? cr.ModeHiItem('Modified') .. '+' .. cr.ModeHiItem('Fill') : '',
 		b.readonly ? " \uf023" : '', # nf-fa-lock
@@ -60,7 +40,7 @@ def StatuslineLeft(window: number, inactive: bool): string
 	const info = StatuslineSection(0, 'B', [
 		GitStatus(),
 		g:battery#component_escaped(),
-	])->AppendIfVisible(' ' .. cr.Sep(0, cr.ModeGroup('B'), cr.ModeGroup('Fill')))
+	])->st.AppendIfVisible(' ' .. cr.Sep(0, cr.ModeGroup('B'), cr.ModeGroup('Fill')))
 	const vimMode = cr.ModeSection(0, 'A', empty(info) ? 'Fill' : 'B')
 
 	return join([vimMode, info, fileName])
@@ -113,7 +93,7 @@ def InitTab()
 			width += 2
 		endif
 
-		const icon = bufname(bufnr)->g:nerdfont#find()->DropIfDefault(g:nerdfont#default)->PrependIfVisible(' ')
+		const icon = bufname(bufnr)->g:nerdfont#find()->st.DropIfDefault(g:nerdfont#default)->st.PrependIfVisible(' ')
 		const iconWidth = strchars(icon)
 		if width + iconWidth >= maxWidth
 			return [tabDisplay, width]

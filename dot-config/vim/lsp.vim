@@ -1,5 +1,6 @@
 vim9script
 
+import './tools/strings.vim'
 import './tools/perl.vim'
 
 const lspServers = [
@@ -121,17 +122,6 @@ const lspOptions = {
 
 command! -nargs=* -complete=customlist,ListMissingServers -bar LspInstall Install(<f-args>)
 
-# Convert a list of strings to a dictionary containing those same strings as
-# keys, approximating a set type. You can use has_key() to test set membership
-# on the result, rather than index().
-def ToStringSet(stringList: list<string>): dict<bool>
-	var stringSet: dict<bool>
-	for string in stringList
-		stringSet[string] = true
-	endfor
-	return stringSet
-enddef
-
 def IsInstalled(server: dict<any>): bool
 	return server->has_key('installed') ? server.installed() : executable(server.path) == 1
 enddef
@@ -160,7 +150,7 @@ export def Configure(): void
 		const warn = $'{missingCount} language server{missingCount > 1 ? "s are" : " is"} configured, but not installed. You may want to run :LspInstall.'
 		augroup dot/vim/lsp.vim
 			autocmd!
-			exe $'autocmd VimEnter * ++once echo "{escape(warn, '"\\')}"'
+			exe $'autocmd VimEnter * ++once echo {strings.Quote(warn)}'
 		augroup END
 	endif
 
@@ -176,7 +166,7 @@ export def Install(...serverNames: list<string>): void
 		return
 	endif
 
-	const serverNamesSet = ToStringSet(serverNames)
+	const serverNamesSet = strings.ToStringSet(serverNames)
 	const serversToInstall = empty(serverNamesSet)
 		? missingServers
 		: missingServers->copy()->filter((_, server): bool => serverNamesSet->has_key(server.name))
