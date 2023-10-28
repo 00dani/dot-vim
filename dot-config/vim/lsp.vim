@@ -141,7 +141,7 @@ def InstalledServers(): list<dict<any>>
 enddef
 
 def MissingServers(): list<dict<any>>
-	return lspServers->deepcopy()->filter((_, server): bool => !server->isInstalled())
+	return lspServers->deepcopy()->filter((_, server): bool => !server->IsInstalled())
 enddef
 
 def ListMissingServers(argLead: string, cmdLine: string, cursorPos: number): list<string>
