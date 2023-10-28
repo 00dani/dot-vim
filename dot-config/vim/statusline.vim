@@ -1,6 +1,7 @@
 vim9script
 
 import autoload ($XDG_CACHE_HOME .. '/vim/pack/minpac/start/vim-crystalline/autoload/crystalline.vim') as cr
+import './tools/paths.vim'
 import './tools/strings.vim' as st
 
 def StatuslineSection(seps: number, group: string, components: list<string>): string
@@ -9,27 +10,32 @@ def StatuslineSection(seps: number, group: string, components: list<string>): st
 		->join(' ' .. cr.Sep(seps, hiGroup, hiGroup) .. ' ')
 enddef
 
-def GitStatus(): string
-	if empty(g:FugitiveGitDir())
+def GitStatus(gitDir: string): string
+	if empty(gitDir)
 		return ''
 	endif
 
-	const branch = g:FugitiveHead()->st.PrependIfVisible("\ue0a0 ") # nf-pl-branch
+	const branch = g:FugitiveHead(gitDir)->st.PrependIfVisible("\ue0a0 ") # nf-pl-branch
 	if !empty(branch)
 		return branch
 	endif
 
-	return g:FugitiveHead(7)
+	return g:FugitiveHead(7, gitDir)
 		->st.PrependIfVisible("\Uf135e (") # nf-md-head
 		->st.AppendIfVisible(")")
 enddef
 
 def StatuslineLeft(window: number, inactive: bool): string
 	const bufnr = window->winbufnr()
+	const filePath = bufname(bufnr)
+	const gitDir = g:FugitiveGitDir(bufnr)
+
+	const friendlyPath = empty(gitDir) ? filePath->fnamemodify(':~') : filePath->paths.RelativeTo(gitDir->fnamemodify(':h'))
 	const b = bufnr->getbufvar('&')
+
 	const fileName = [
-		bufname(bufnr)->g:nerdfont#find()->st.DropIfDefault(g:nerdfont#default)->st.AppendIfVisible(' '),
-		b.buftype == '' ? '%t' : '%f',
+		g:nerdfont#find(filePath)->st.DropIfDefault(g:nerdfont#default)->st.AppendIfVisible(' '),
+		b.buftype == '' ? friendlyPath : '%f',
 		b.modifiable && b.modified ? cr.ModeHiItem('Modified') .. '+' .. cr.ModeHiItem('Fill') : '',
 		b.readonly ? " \uf023" : '', # nf-fa-lock
 	]->join('')
@@ -38,7 +44,7 @@ def StatuslineLeft(window: number, inactive: bool): string
 	endif
 
 	const info = StatuslineSection(0, 'B', [
-		GitStatus(),
+		GitStatus(gitDir),
 		g:battery#component_escaped(),
 	])->st.AppendIfVisible(' ' .. cr.Sep(0, cr.ModeGroup('B'), cr.ModeGroup('Fill')))
 	const vimMode = cr.ModeSection(0, 'A', empty(info) ? 'Fill' : 'B')
