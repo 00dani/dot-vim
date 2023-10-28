@@ -52,6 +52,9 @@ if has('patch-8.2.4325')
 	set wildoptions+=pum
 endif
 
+# This is a window-local setting but I like 2 by default. :)
+set conceallevel=2
+
 set tabstop=2 shiftwidth=2
 
 if exists('+breakindent')
@@ -84,6 +87,8 @@ g:csv_no_conceal = 1
 g:vim_svelte_plugin_use_typescript = 1
 
 g:LatexBox_Folding = 1
+
+g:markdown_folding = 1
 
 g:ale_set_balloons = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
