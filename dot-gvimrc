@@ -1,9 +1,11 @@
-set guifont=FiraCode-Regular:h14
+set guifont=JuliaMonoNF-Regular:h14
 
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-hi CursorLine gui=bold
-hi Comment gui=italic
+if has('gui_macvim')
+	set macligatures
+	set macthinstrokes
+endif
