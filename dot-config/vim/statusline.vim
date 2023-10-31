@@ -100,7 +100,7 @@ def InitTab()
 		endif
 
 		const icon = bufname(bufnr)->g:nerdfont#find()->st.DropIfDefault(g:nerdfont#default)->st.PrependIfVisible(' ')
-		const iconWidth = strchars(icon)
+		const iconWidth = strwidth(icon)
 		if width + iconWidth >= maxWidth
 			return [tabDisplay, width]
 		endif
