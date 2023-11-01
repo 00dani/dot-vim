@@ -21,6 +21,14 @@ const lspServers = [
 	},
 
 	{
+		name: 'marksman',
+		filetype: 'markdown',
+		path: '/usr/local/bin/marksman',
+		args: ['server'],
+		install: 'brew install marksman',
+	},
+
+	{
 		name: 'PerlNavigator',
 		filetype: 'perl',
 		path: expand('~/.local/bin/perlnavigator'),
@@ -87,6 +95,22 @@ const lspServers = [
 		path: expand('~/.local/bin/vim-language-server'),
 		args: ['--stdio'],
 		install: 'npm install -g vim-language-server',
+	},
+
+	{
+		name: 'vscode-css-language-server',
+		filetype: 'css',
+		path: expand('~/.local/bin/vscode-css-language-server'),
+		args: ['--stdio'],
+		install: 'npm install -g vscode-langservers-extracted',
+	},
+
+	{
+		name: 'vscode-html-language-server',
+		filetype: 'html',
+		path: expand('~/.local/bin/vscode-html-language-server'),
+		args: ['--stdio'],
+		install: 'npm install -g vscode-langservers-extracted',
 	},
 
 	{
