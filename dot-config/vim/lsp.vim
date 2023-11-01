@@ -39,30 +39,6 @@ const lspServers = [
 	perl.Lsp('Perl::LanguageServer', ['-e', 'Perl::LanguageServer::run']),
 
 	{
-		name: 'taplo',
-		filetype: 'toml',
-		path: '/usr/local/bin/taplo',
-		args: ['lsp', 'stdio'],
-		install: 'brew install taplo',
-	},
-
-	{
-		name: 'tilt-lsp',
-		filetype: 'bzl',
-		path: '/usr/local/bin/tilt',
-		args: ['lsp', 'start'],
-		install: 'brew install tilt',
-	},
-
-	{
-		name: 'typescript-language-server',
-		filetype: ['javascript', 'typescript'],
-		path: '/usr/local/bin/typescript-language-server',
-		args: ['--stdio'],
-		install: 'brew install typescript-language-server',
-	},
-
-	{
 		name: 'phpactor',
 		filetype: 'php',
 		path: expand('~/bin/phpactor'),
@@ -87,6 +63,30 @@ const lspServers = [
 		path: '/usr/local/bin/solargraph',
 		args: ['stdio'],
 		install: 'brew install solargraph',
+	},
+
+	{
+		name: 'taplo',
+		filetype: 'toml',
+		path: '/usr/local/bin/taplo',
+		args: ['lsp', 'stdio'],
+		install: 'brew install taplo',
+	},
+
+	{
+		name: 'tilt-lsp',
+		filetype: 'bzl',
+		path: '/usr/local/bin/tilt',
+		args: ['lsp', 'start'],
+		install: 'brew install tilt',
+	},
+
+	{
+		name: 'typescript-language-server',
+		filetype: ['javascript', 'typescript'],
+		path: '/usr/local/bin/typescript-language-server',
+		args: ['--stdio'],
+		install: 'brew install typescript-language-server',
 	},
 
 	{
