@@ -76,7 +76,7 @@ minpac#add('fladson/vim-kitty')
 minpac#add('fpob/nette.vim')
 
 if executable('task')
-	minpac#add('farseer90718/vim-taskwarrior')
+	minpac#add('blindFS/vim-taskwarrior')
 endif
 
 minpac#add('pedrohdz/vim-yaml-folds')
