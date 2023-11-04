@@ -94,6 +94,9 @@ endif
 minpac#add('lotabout/skim')
 minpac#add('lotabout/skim.vim')
 
+# Transparently view and edit GPG-encrypted files in Vim. I find this most
+# useful when working with my password-store, but obviously it's helpful
+# anywhere you're using GnuPG.
 minpac#add('jamessan/vim-gnupg')
 
 # Improved in-file search behaviour: highlight the current match separately,
