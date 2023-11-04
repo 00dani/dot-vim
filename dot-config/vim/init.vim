@@ -131,13 +131,3 @@ statusline.Init()
 # necessary.
 import "./lsp.vim"
 lsp.Configure()
-
-set formatexpr=lsp#lsp#FormatExpr()
-set keywordprg=:LspHover
-nnoremap gD <Cmd>LspGotoDeclaration<CR>
-nnoremap gd <Cmd>LspGotoDefinition<CR>
-nnoremap gi <Cmd>LspGotoImpl<CR>
-nnoremap <C-k> <Cmd>LspShowSignature<CR>
-nnoremap gr <Cmd>LspShowReferences<CR>
-xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
-xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>

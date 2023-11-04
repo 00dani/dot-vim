@@ -162,7 +162,24 @@ def ListMissingServers(argLead: string, cmdLine: string, cursorPos: number): lis
 	return MissingServers()->mapnew((_, server): string => server.name)
 enddef
 
+def LspBufferSettings(): void
+	setlocal formatexpr=lsp#lsp#FormatExpr()
+	setlocal keywordprg=:LspHover
+	nnoremap <buffer> gD <Cmd>LspGotoDeclaration<CR>
+	nnoremap <buffer> gd <Cmd>LspGotoDefinition<CR>
+	nnoremap <buffer> gi <Cmd>LspGotoImpl<CR>
+	nnoremap <buffer> <C-k> <Cmd>LspShowSignature<CR>
+	nnoremap <buffer> gr <Cmd>LspShowReferences<CR>
+	xnoremap <buffer> <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
+	xnoremap <buffer> <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
+enddef
+
 export def Configure(): void
+	augroup dot/vim/lsp.vim
+		autocmd!
+		autocmd User LspAttached LspBufferSettings()
+	augroup END
+
 	# We have to use final rather than const because LspAddServer() assumes it can
 	# modify the dicts it gets, rather than making a fresh copy to mess with.
 	final installedServers = InstalledServers()
@@ -173,7 +190,6 @@ export def Configure(): void
 		const missingCount = len(lspServers) - len(installedServers)
 		const warn = $'{missingCount} language server{missingCount > 1 ? "s are" : " is"} configured, but not installed. You may want to run :LspInstall.'
 		augroup dot/vim/lsp.vim
-			autocmd!
 			exe $'autocmd VimEnter * ++once echo {strings.Quote(warn)}'
 		augroup END
 	endif
