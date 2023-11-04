@@ -36,6 +36,34 @@ minpac#add('tpope/vim-fugitive')
 minpac#add('tpope/vim-rhubarb')
 minpac#add('mhinz/vim-signify')
 
+# Tpope makes a *lot* of Vim plugins. Here're the others I use!
+
+# Mapping stuff:
+# Repeat a supporting plugin's custom mapping with Vim's . command. This
+# functionality is invoked by many other plugins to get repeat support.
+minpac#add('tpope/vim-repeat')
+# Comment/uncomment operator, mapped to gc.
+minpac#add('tpope/vim-commentary')
+# Adjust "surroundings", like quotes and brackets.
+minpac#add('tpope/vim-surround')
+# Paired mappings (encode/decode, next/prev, etc.)
+minpac#add('tpope/vim-unimpaired')
+
+# Filetype support stuff:
+# Set Vim's 'path' for various filetypes, so commands like gf work.
+minpac#add('tpope/vim-apathy')
+# Automatically insert end keywords for various filetypes.
+minpac#add('tpope/vim-endwise')
+
+# Configure indentation and related file-local settings automatically. Sleuth
+# supports Editorconfig files and uses them when it can, just like the
+# editorconfig-vim plugin does. However, there are some Editorconfig
+# properties which editorconfig-vim supports and Sleuth doesn't, and Sleuth
+# can still infer indentation settings when you don't have an .editorconfig
+# file, so running both plugins side-by-side is useful.
+minpac#add('tpope/vim-sleuth')
+
+
 minpac#add('lifepillar/vim-gruvbox8')
 
 # Project handling. Direnv is a tool for setting project-local environment
@@ -60,13 +88,6 @@ minpac#add('lotabout/skim.vim')
 minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
 minpac#add('lifepillar/vim-mucomplete')
-minpac#add('tpope/vim-apathy')
-minpac#add('tpope/vim-commentary')
-minpac#add('tpope/vim-endwise')
-minpac#add('tpope/vim-repeat')
-minpac#add('tpope/vim-sleuth')
-minpac#add('tpope/vim-surround')
-minpac#add('tpope/vim-unimpaired')
 
 minpac#add('wincent/loupe')
 minpac#add('wincent/terminus')
