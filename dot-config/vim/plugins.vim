@@ -132,10 +132,14 @@ minpac#add('yegappan/lsp')
 # please use SchemaStore.org for some reason.
 minpac#add('00dani/SchemaStore.vim')
 
+# vim-crystalline is a utility library to aid in writing your own Vim
+# statusline and tabline functions. I've used it extensively in my
+# ./statusline.vim module. The plugins below it provide stuff I like to have
+# displayed in the statusline.
 minpac#add('rbong/vim-crystalline')
-minpac#add('lambdalisue/battery.vim')
-minpac#add('lambdalisue/glyph-palette.vim')
-minpac#add('lambdalisue/nerdfont.vim')
+minpac#add('lambdalisue/battery.vim') # System's current battery level
+minpac#add('lambdalisue/glyph-palette.vim') # Appropriate colours for filetypes
+minpac#add('lambdalisue/nerdfont.vim') # Icons for filetypes
 
 minpac#add('lambdalisue/fern.vim')
 minpac#add('lambdalisue/fern-hijack.vim')
