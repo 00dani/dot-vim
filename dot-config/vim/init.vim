@@ -39,8 +39,13 @@ silent! packadd! editorconfig
 
 set belloff+=ctrlg
 
-set linebreak showbreak=↩
 set modelines=5
+
+if has('linebreak')
+	set breakindent breakindentopt=sbr
+	set linebreak showbreak=↩
+endif
+
 set relativenumber
 set showcmd
 
@@ -53,9 +58,6 @@ set conceallevel=2
 
 set tabstop=2 shiftwidth=2
 
-if exists('+breakindent')
-	set breakindent breakindentopt=sbr
-endif
 for dir_name in ['backup', 'swap', 'undo']
 	EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir_name)
 endfor
