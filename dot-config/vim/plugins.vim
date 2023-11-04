@@ -97,7 +97,21 @@ minpac#add('lotabout/skim.vim')
 minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
 
+# Improved in-file search behaviour: highlight the current match separately,
+# default to very magic /\v regular expressions, and configure Vim's standard
+# search-related settings to be a bit more intuitive.
 minpac#add('wincent/loupe')
+# Enhance Vim's behaviour when running in a terminal, which is the main way I
+# use it. Terminus does the following:
+# - sets the cursor shape according to current mode,
+# - turns on full mouse support in all modes,
+# - enables Vim's standard FocusGained and FocusLost events, by requesting
+#   focus reporting from the terminal, and
+# - binds those events to calling :checktime, so that Vim will
+#   automatically reload unmodified files if they're changed externally (say,
+#   by a Git checkout).
+# Terminus also used to be required for bracketed paste to work properly, but
+# I think Vim supports that by default now.
 minpac#add('wincent/terminus')
 minpac#add('w0rp/ale')
 
