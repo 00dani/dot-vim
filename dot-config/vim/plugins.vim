@@ -30,14 +30,18 @@ minpac#add('prabirshrestha/async.vim')
 
 minpac#add('lifepillar/vim-gruvbox8')
 
-# If this Vim doesn't already provide Editorconfig as part of its runtime,
-# install it ourselves, using exactly the same package name and type (opt, so
-# that it can be loaded with :packadd).
+# Project handling. Direnv is a tool for setting project-local environment
+# variables as you cd around, and Editorconfig is a generic format telling
+# text editors what your preferred indent size and stuff are for the given
+# project. Both are very helpful to have integrated with Vim.
+minpac#add('direnv/direnv.vim')
 if !isdirectory($VIMRUNTIME .. '/pack/dist/opt/editorconfig')
+	# If this Vim doesn't already provide Editorconfig as part of its runtime,
+	# install it ourselves, using exactly the same package name and type (opt, so
+	# that it can be loaded with :packadd).
 	minpac#add('editorconfig/editorconfig-vim', {name: 'editorconfig', type: 'opt'})
 endif
 
-minpac#add('direnv/direnv.vim')
 minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
 minpac#add('lifepillar/vim-mucomplete')
