@@ -37,19 +37,16 @@ nnoremap <C-t> :Files<CR>
 
 silent! packadd! editorconfig
 
-if exists('+belloff')
-	set belloff+=ctrlg
-endif
+set belloff+=ctrlg
 
 set completeopt+=menuone
 
 set linebreak showbreak=↩
 set modelines=5
+set relativenumber
 set showcmd
 set wildmode=longest,full
-if has('patch-8.2.4325')
-	set wildoptions+=pum
-endif
+set wildoptions+=pum
 
 # This is a window-local setting but I like 2 by default. :)
 set conceallevel=2
@@ -59,13 +56,6 @@ set tabstop=2 shiftwidth=2
 if exists('+breakindent')
 	set breakindent breakindentopt=sbr
 endif
-
-if exists('+relativenumber')
-	set relativenumber
-else
-	set number
-endif
-
 for dir_name in ['backup', 'swap', 'undo']
 	EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir_name)
 endfor
