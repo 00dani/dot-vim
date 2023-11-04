@@ -94,7 +94,6 @@ endif
 minpac#add('lotabout/skim')
 minpac#add('lotabout/skim.vim')
 
-minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
 
 # Improved in-file search behaviour: highlight the current match separately,
