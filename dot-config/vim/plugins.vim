@@ -27,6 +27,15 @@ minpac#add('k-takata/minpac', {type: 'opt'})
 # vim-sensible at the end of the alphabet like so to get it loaded first.
 minpac#add('tpope/vim-sensible', {name: 'zz-vim-sensible'})
 
+# Git support. Fugitive is a pretty famous wrapper that adds :Git commands
+# when you're in a repo, and Rhubarb is a GitHub-specific support addon for
+# it. (I don't personally use GitHub much, but work does, so whatever.)
+# Signify marks changed lines in the current buffer with symbols in the left
+# margin, which I finde very helpful.
+minpac#add('tpope/vim-fugitive')
+minpac#add('tpope/vim-rhubarb')
+minpac#add('mhinz/vim-signify')
+
 minpac#add('lifepillar/vim-gruvbox8')
 
 # Project handling. Direnv is a tool for setting project-local environment
@@ -46,14 +55,11 @@ minpac#add('jamessan/vim-gnupg')
 minpac#add('lifepillar/vim-mucomplete')
 minpac#add('lotabout/skim')
 minpac#add('lotabout/skim.vim')
-minpac#add('mhinz/vim-signify')
 minpac#add('tpope/vim-apathy')
 minpac#add('tpope/vim-commentary')
 minpac#add('tpope/vim-endwise')
 minpac#add('tpope/vim-eunuch')
-minpac#add('tpope/vim-fugitive')
 minpac#add('tpope/vim-repeat')
-minpac#add('tpope/vim-rhubarb')
 minpac#add('tpope/vim-sleuth')
 minpac#add('tpope/vim-surround')
 minpac#add('tpope/vim-unimpaired')
