@@ -64,7 +64,16 @@ minpac#add('tpope/vim-endwise')
 minpac#add('tpope/vim-sleuth')
 
 
+# My preferred colorscheme! gruvbox8 is a variant of the popular Gruvbox theme
+# with better support for Vim 8+ features like :terminal, along with various
+# other niceties. It also gracefully degrades from true colour all the way
+# down to *two* colours if necessary, which is kind of impressive.
 minpac#add('lifepillar/vim-gruvbox8')
+
+# Sensible tab completion support. MUcomplete is ridiculously simple and
+# basically just translates <Tab> to Vim's standard completion bindings, and
+# it's *great* for my purposes.
+minpac#add('lifepillar/vim-mucomplete')
 
 # Project handling. Direnv is a tool for setting project-local environment
 # variables as you cd around, and Editorconfig is a generic format telling
@@ -87,7 +96,6 @@ minpac#add('lotabout/skim.vim')
 
 minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
-minpac#add('lifepillar/vim-mucomplete')
 
 minpac#add('wincent/loupe')
 minpac#add('wincent/terminus')
