@@ -26,7 +26,6 @@ minpac#add('k-takata/minpac', {type: 'opt'})
 # to 'runtimepath' in REVERSE alphabetical order, so we have to put
 # vim-sensible at the end of the alphabet like so to get it loaded first.
 minpac#add('tpope/vim-sensible', {name: 'zz-vim-sensible'})
-minpac#add('prabirshrestha/async.vim')
 
 minpac#add('lifepillar/vim-gruvbox8')
 
