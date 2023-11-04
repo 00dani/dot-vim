@@ -16,8 +16,11 @@ minpac#add('prabirshrestha/async.vim')
 
 minpac#add('lifepillar/vim-gruvbox8')
 
+# If this Vim doesn't already provide Editorconfig as part of its runtime,
+# install it ourselves, using exactly the same package name and type (opt, so
+# that it can be loaded with :packadd).
 if !isdirectory($VIMRUNTIME .. '/pack/dist/opt/editorconfig')
-	minpac#add('editorconfig/editorconfig-vim')
+	minpac#add('editorconfig/editorconfig-vim', {name: 'editorconfig', type: 'opt'})
 endif
 
 minpac#add('direnv/direnv.vim')

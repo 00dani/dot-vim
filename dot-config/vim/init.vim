@@ -44,7 +44,9 @@ inoremap jj <Esc>
 # tools my beloved
 nnoremap <C-t> :Files<CR>
 
-silent! packadd! editorconfig
+# We will always have Editorconfig available as an optional package, either
+# because it was bundled with Vim or because Minpac installed it that way.
+packadd! editorconfig
 
 set belloff+=ctrlg
 
