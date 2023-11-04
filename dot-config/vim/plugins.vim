@@ -1,5 +1,9 @@
 vim9script
 silent! packadd minpac
+
+# Automatically bootstrap Minpac if necessary. Once it's installed it knows
+# how to manage and update itself, but Vim doesn't know how to install it
+# without our help. ;)
 if !exists('g:loaded_minpac')
 	silent !git clone https://github.com/k-takata/minpac.git $XDG_CACHE_HOME/vim/pack/minpac/opt/minpac
 	augroup minpac
@@ -9,6 +13,9 @@ if !exists('g:loaded_minpac')
 endif
 packadd minpac
 
+# Minpac is told to install into the XDG cache home because if we do blow away
+# that directory, it can and will simply reinstall everything I've configured
+# it to install the next time Vim is launched.
 minpac#init({dir: $XDG_CACHE_HOME .. '/vim'})
 minpac#add('k-takata/minpac', {type: 'opt'})
 
