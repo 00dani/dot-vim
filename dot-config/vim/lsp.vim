@@ -162,16 +162,39 @@ def ListMissingServers(argLead: string, cmdLine: string, cursorPos: number): lis
 	return MissingServers()->mapnew((_, server): string => server.name)
 enddef
 
+def ServerHas(feature: string): bool
+	return lsp#buffer#CurbufGetServer(feature) != {}
+enddef
+
 def LspBufferSettings(): void
-	setlocal formatexpr=lsp#lsp#FormatExpr()
-	setlocal keywordprg=:LspHover
-	nnoremap <buffer> gD <Cmd>LspGotoDeclaration<CR>
-	nnoremap <buffer> gd <Cmd>LspGotoDefinition<CR>
-	nnoremap <buffer> gi <Cmd>LspGotoImpl<CR>
-	nnoremap <buffer> <C-k> <Cmd>LspShowSignature<CR>
-	nnoremap <buffer> gr <Cmd>LspShowReferences<CR>
-	xnoremap <buffer> <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
-	xnoremap <buffer> <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
+	if ServerHas('documentFormatting')
+		setlocal formatexpr=lsp#lsp#FormatExpr()
+	endif
+
+	if ServerHas('hover')
+		setlocal keywordprg=:LspHover
+	endif
+
+	if ServerHas('declaration')
+		nnoremap <buffer> gD <Cmd>LspGotoDeclaration<CR>
+	endif
+
+	if ServerHas('definition')
+		nnoremap <buffer> gd <Cmd>LspGotoDefinition<CR>
+	endif
+
+	if ServerHas('implementation')
+		nnoremap <buffer> gi <Cmd>LspGotoImpl<CR>
+	endif
+
+	if ServerHas('references')
+		nnoremap <buffer> gr <Cmd>LspShowReferences<CR>
+	endif
+
+	if ServerHas('selectionRange')
+		xnoremap <buffer> <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
+		xnoremap <buffer> <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
+	endif
 enddef
 
 export def Configure(): void
