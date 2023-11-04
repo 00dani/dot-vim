@@ -98,6 +98,10 @@ endif
 
 g:csv_no_conceal = 1
 
+g:GPGDefaultRecipients = [
+	'Danielle McLean <dani@00dani.me>',
+]
+
 g:markdown_folding = 1
 
 g:ale_set_balloons = 1
