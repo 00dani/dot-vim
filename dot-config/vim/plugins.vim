@@ -83,7 +83,5 @@ minpac#add('pedrohdz/vim-yaml-folds')
 
 if has('macunix')
 	minpac#add('rizzatti/dash.vim')
-	# We rename this plugin to make sure it loads AFTER vim-polyglot,
-	# since it won't work properly if it's loaded first.
-	minpac#add('itspriddle/vim-marked', {name: 'zzvim-marked'})
+	minpac#add('itspriddle/vim-marked')
 endif
