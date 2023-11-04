@@ -118,12 +118,6 @@ augroup glyphPalette
 	autocmd FileType fern g:glyph_palette#apply()
 augroup END
 
-g:mucomplete#can_complete = {
-	default: {
-		omni: (t) => strlen(&l:omnifunc) > 0 && t =~# '\m\k\%(\k\|\.\)$'
-	}
-}
-
 # Configure a statusline and tabline using vim-crystalline. I tried a bunch of
 # different statusline plugins and this one, which is basically just a utility
 # library for writing your *own* statusline functions, worked the best for my
