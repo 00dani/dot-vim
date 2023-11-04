@@ -141,8 +141,11 @@ minpac#add('lambdalisue/battery.vim') # System's current battery level
 minpac#add('lambdalisue/glyph-palette.vim') # Appropriate colours for filetypes
 minpac#add('lambdalisue/nerdfont.vim') # Icons for filetypes
 
+# fern.vim is a lightweight and asychronous tree viewer that serves as a
+# delightful little file browser. It's kinda like the popular NERDtree plugin,
+# but much simpler.
 minpac#add('lambdalisue/fern.vim')
-minpac#add('lambdalisue/fern-hijack.vim')
+minpac#add('lambdalisue/fern-hijack.vim') # Replace Netrw with Fern!
 minpac#add('lambdalisue/fern-renderer-nerdfont.vim')
 minpac#add('lambdalisue/fern-git-status.vim')
 minpac#add('lambdalisue/fern-ssh')
