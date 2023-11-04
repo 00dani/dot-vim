@@ -18,11 +18,10 @@ if !isdirectory($XDG_CACHE_HOME .. '/vim/pack')
 	PackUpdate
 endif
 
-if has('gui_running') || has('termguicolors')
-	if $COLORTERM == 'truecolor'
-		&t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-		&t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-	endif
+# If both Vim and the terminal it's running in support true colour, use it.
+# Otherwise we just fall back to 256-colour mode, or even the old 16-colour
+# mode if necessary!
+if has('termguicolors') && $COLORTERM == 'truecolor'
 	set termguicolors
 endif
 
