@@ -25,6 +25,9 @@ if has('termguicolors') && $COLORTERM == 'truecolor'
 	set termguicolors
 endif
 
+# Colour scheme and corresponding settings. gruvbox8 happens to work on pretty
+# much any setup (GUI vim, true-colour terminal, 256 colours, even a 2-colour
+# term if necessary!) so we don't need to mess around too much here.
 set background=dark
 g:gruvbox_transp_bg = 1
 g:gruvbox_italicize_strings = 0
@@ -32,13 +35,22 @@ g:gruvbox_filetype_hi_groups = 1
 g:gruvbox_plugin_hi_groups = 1
 colorscheme gruvbox8
 
+# I like being able to drop out of Insert mode without reaching for the Escape
+# key in the corner. Some folks use jk instead but I find jj nice and quick.
 inoremap jj <Esc>
+
+# lotabout/skim.vim's fuzzy file finder! It's basically a copy of fzf.vim, but
+# it uses skim as the backend instead of fzf. Rust versions of command-line
+# tools my beloved
 nnoremap <C-t> :Files<CR>
 
 silent! packadd! editorconfig
 
 set belloff+=ctrlg
 
+# I like to explicitly set 'modelines' to the default 5 because some
+# distributions change it to zero in the global config, and I want modelines
+# to work.
 set modelines=5
 
 if has('linebreak')
@@ -56,14 +68,27 @@ set wildoptions+=pum
 # This is a window-local setting but I like 2 by default. :)
 set conceallevel=2
 
+# I like small indents. This setup supports both vim-sleuth and editorconfig,
+# so files with different indent schemes will automatically be handled
+# correctly, but this default is what I like personally. Also, I *vastly*
+# prefer tabs over spaces for indentation, for the simple reason that if
+# someone else needs a bigger indent size than I do, they can just change
+# their editor's tabstop setting rather than having to reindent the whole
+# file.
 set tabstop=2 shiftwidth=2
 
 for dir_name in ['backup', 'swap', 'undo']
 	EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir_name)
 endfor
 
+# Try to save backup and swap files alongside the original file, but if that's
+# not possible (directory not writable, for example), then fall back to the
+# appropriate XDG directory instead.
 set backupdir=.,$XDG_STATE_HOME/vim/backup
 set directory=.,$XDG_STATE_HOME/vim/swap
+
+# I like persistent undo! If Vim was built with it, then persist undo files
+# for eveything in the XDG state home. :)
 if exists('+undofile')
 	set undofile
 	set undodir=$XDG_STATE_HOME/vim/undo
@@ -85,6 +110,10 @@ g:ale_set_balloons = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+# Get the correct filetype icons and matching colours when viewing a directory
+# in Fern. As the name implies, this requires Nerd Fonts support, either by
+# using a patched font or by having your setup substitute an icon font when
+# necessary.
 g:fern#renderer = 'nerdfont'
 augroup glyphPalette
 	autocmd!
@@ -97,9 +126,17 @@ g:mucomplete#can_complete = {
 	}
 }
 
+# Configure a statusline and tabline using vim-crystalline. I tried a bunch of
+# different statusline plugins and this one, which is basically just a utility
+# library for writing your *own* statusline functions, worked the best for my
+# purposes. Very quick, naturally very configurable, I could tell the modified
+# buffer + to appear in red, all that good stuff. Yay!
 import "./statusline.vim"
 statusline.Init()
 
+# Set up LSP client support. My lsp.vim module both tells yegappan/lsp which
+# LSP servers it can connect to and provides a way to install those servers if
+# necessary.
 import "./lsp.vim"
 lsp.Configure()
 
