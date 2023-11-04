@@ -115,9 +115,21 @@ minpac#add('wincent/loupe')
 # Terminus also used to be required for bracketed paste to work properly, but
 # I think Vim supports that by default now.
 minpac#add('wincent/terminus')
-minpac#add('w0rp/ale')
 
+# Asynchronous Linter Engine: supports a huge range of linters for various
+# filetypes, runs them in the background, and reports issues to you in the
+# left margin. Many language plugins bundle their own ale_linters, making it a
+# cool choice for maximum linter support.
+minpac#add('dense-analysis/ale')
+# A client for the Language Server Protocol. ALE provides an LSP client as
+# well, but I prefer the way yegappan/lsp is configured and the two plugins
+# play quite nicely together. My servers are configured in the ./lsp.vim
+# module.
 minpac#add('yegappan/lsp')
+# The catalog of JSON Schema definitions available at https://SchemaStore.org.
+# I use this to configure the JSON language server with schema validation and
+# completion support, since unlike the YAML server I can't just tell it to
+# please use SchemaStore.org for some reason.
 minpac#add('00dani/SchemaStore.vim')
 
 minpac#add('rbong/vim-crystalline')
