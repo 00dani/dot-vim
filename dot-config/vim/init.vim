@@ -39,12 +39,12 @@ silent! packadd! editorconfig
 
 set belloff+=ctrlg
 
-set completeopt+=menuone
-
 set linebreak showbreak=↩
 set modelines=5
 set relativenumber
 set showcmd
+
+set completeopt+=menuone
 set wildmode=longest,full
 set wildoptions+=pum
 
