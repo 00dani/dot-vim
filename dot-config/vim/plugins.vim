@@ -11,7 +11,14 @@ packadd minpac
 
 minpac#init({dir: $XDG_CACHE_HOME .. '/vim'})
 minpac#add('k-takata/minpac', {type: 'opt'})
-minpac#add('tpope/vim-sensible')
+
+# tpope/vim-sensible is a collection of default Vim settings that "everyone
+# can agree on", and is an excellent starting point for anyone's Vim config.
+# We'd like it to load first, before any other plugins. However somewhat
+# confusingly, Vim's native 'packages' feature adds plugins from pack/*/start
+# to 'runtimepath' in REVERSE alphabetical order, so we have to put
+# vim-sensible at the end of the alphabet like so to get it loaded first.
+minpac#add('tpope/vim-sensible', {name: 'zz-vim-sensible'})
 minpac#add('prabirshrestha/async.vim')
 
 minpac#add('lifepillar/vim-gruvbox8')
