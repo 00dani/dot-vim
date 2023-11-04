@@ -175,11 +175,21 @@ minpac#add('fpob/nette.vim')
 # curious: https://pedrohdz.com/posts/programming/yaml_vim_folds/
 minpac#add('pedrohdz/vim-yaml-folds')
 
+# An interactive mode for Taskwarrior, built as a Vim plugin. It's obviously
+# only useful if Taskwarrior is installed.
 if executable('task')
 	minpac#add('blindFS/vim-taskwarrior')
 endif
 
+# Integrations with MacOS apps, which are useless if Vim's running on
+# something other than MacOS.
 if has('macunix')
+	# Dash is a developer documentation viewer, and this plugin makes it easy to
+	# search up the relevant Dash docs from inside Vim.
 	minpac#add('rizzatti/dash.vim')
+
+	# Marked is a Markdown preview window. It's nice to run this alongside your
+	# Vim window when writing in Markdown, especially if you need to do weird
+	# things with the syntax.
 	minpac#add('itspriddle/vim-marked')
 endif
