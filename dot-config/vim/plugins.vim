@@ -50,11 +50,16 @@ if !isdirectory($VIMRUNTIME .. '/pack/dist/opt/editorconfig')
 	minpac#add('editorconfig/editorconfig-vim', {name: 'editorconfig', type: 'opt'})
 endif
 
+# skim is a standalone fuzzy finder, kinda like fzf or fzy or selecta, but
+# written in Rust. These two plugins teach Vim to integrate with it, so you
+# can use skim's high performance fuzzy finding to locate stuff (files,
+# buffers, colorschemes) inside Vim. Nice!
+minpac#add('lotabout/skim')
+minpac#add('lotabout/skim.vim')
+
 minpac#add('godlygeek/tabular')
 minpac#add('jamessan/vim-gnupg')
 minpac#add('lifepillar/vim-mucomplete')
-minpac#add('lotabout/skim')
-minpac#add('lotabout/skim.vim')
 minpac#add('tpope/vim-apathy')
 minpac#add('tpope/vim-commentary')
 minpac#add('tpope/vim-endwise')
