@@ -171,11 +171,13 @@ minpac#add('fladson/vim-kitty')
 # PHPStan config file in my case.
 minpac#add('fpob/nette.vim')
 
+# Really good semantic folding for YAML and YAML-like files. If you're
+# curious: https://pedrohdz.com/posts/programming/yaml_vim_folds/
+minpac#add('pedrohdz/vim-yaml-folds')
+
 if executable('task')
 	minpac#add('blindFS/vim-taskwarrior')
 endif
-
-minpac#add('pedrohdz/vim-yaml-folds')
 
 if has('macunix')
 	minpac#add('rizzatti/dash.vim')
