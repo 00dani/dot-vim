@@ -150,13 +150,25 @@ minpac#add('lambdalisue/fern-renderer-nerdfont.vim')
 minpac#add('lambdalisue/fern-git-status.vim')
 minpac#add('lambdalisue/fern-ssh')
 
+# Automatically close XML tags when you type the opening tag. Kinda like
+# vim-endwise for XML. Very nice to have when working on HTML documents.
 minpac#add('alvan/vim-closetag')
 
+# Syntax highlighting for scripts written in jq's filter language.
 minpac#add('vito-c/jq.vim')
+
+# Syntax highlighting for justfiles, which are very similar to Makefiles, but
+# different enough that using a separate filetype does make sense.
 minpac#add('NoahTheDuke/vim-just')
 
+# Syntax highlighting for kitty.conf, which is really helpful because
+# kovidgoyal/kitty is my daily driver terminal emulator. Yay!
 minpac#add('fladson/vim-kitty')
 
+# Syntax highlighting for .neon files, like phpstan.neon. Nette is actually a
+# full-blown PHP web framework and this plugin provides other Nette tooling
+# too, but I don't use Nette so it's really just providing syntax for the
+# PHPStan config file in my case.
 minpac#add('fpob/nette.vim')
 
 if executable('task')
