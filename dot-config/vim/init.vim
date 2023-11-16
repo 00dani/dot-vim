@@ -103,6 +103,12 @@ g:GPGDefaultRecipients = [
 ]
 
 g:markdown_folding = 1
+g:markdown_fenced_languages = [
+	'bash', 'c', 'dockerfile',
+ 	'ini=dosini', 'json=json5',
+	'j', 'js=javascript', 'javascript',
+	'python', 'php', 'scala',
+]
 
 g:ale_set_balloons = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
