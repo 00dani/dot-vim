@@ -15,13 +15,13 @@ def GitStatus(gitDir: string): string
 		return ''
 	endif
 
-	const branch = g:FugitiveHead(gitDir)->st.PrependIfVisible("\ue0a0 ") # nf-pl-branch
+	const branch = g:FugitiveHead(gitDir)->st.PrependIfVisible("\ue725 ") # nf-dev-git_branch
 	if !empty(branch)
 		return branch
 	endif
 
 	return g:FugitiveHead(7, gitDir)
-		->st.PrependIfVisible("\Uf135e (") # nf-md-head
+		->st.PrependIfVisible("\ue729 (") # nf-dev-git_commit
 		->st.AppendIfVisible(")")
 enddef
 
@@ -54,7 +54,7 @@ enddef
 
 def StatuslineRight(window: number, inactive: bool): string
 	const percent = '%3p%%'
-	const lineInfo = '%3l:%-2c'
+	const lineInfo = '%3l:%-2c'
 	const fileType = '%{&ft}[%{&ff}]'
 	if inactive
 		return StatuslineSection(1, 'Fill', [fileType, percent, lineInfo])
@@ -64,7 +64,7 @@ def StatuslineRight(window: number, inactive: bool): string
 	const fileInfo = StatuslineSection(1, 'Fill', [fileEncoding, fileType])
 
 	const prettyPercent = cr.Sep(1, cr.ModeGroup('Fill'), cr.ModeGroup('B')) .. ' ' .. percent
-	const prettyLineInfo = cr.Sep(1, cr.ModeGroup('B'), cr.ModeGroup('A')) .. lineInfo
+	const prettyLineInfo = cr.Sep(1, cr.ModeGroup('B'), cr.ModeGroup('A')) .. ' ' .. lineInfo
 
 	return join([fileInfo, prettyPercent, prettyLineInfo])
 enddef
