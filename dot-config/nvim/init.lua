@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup "dot-vim.plugins"
+require("lazy").setup "dot_vim.plugins"
 
 vim.o.breakindent = true
 vim.o.termguicolors = true
@@ -24,6 +24,6 @@ vim.o.wildmode = 'longest,full'
 
 vim.keymap.set('i', 'jj', '<Esc>')
 
-require("dot-vim.tree-sitter").setup()
-require("dot-vim.completion").setup()
-require("dot-vim.lsp").setup()
+require("dot_vim.tree-sitter").setup()
+require("dot_vim.completion").setup()
+require("dot_vim.lsp").setup()
