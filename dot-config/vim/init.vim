@@ -62,6 +62,7 @@ endif
 
 set relativenumber
 set showcmd
+set title
 
 set completeopt+=menuone
 set wildmode=longest,full
