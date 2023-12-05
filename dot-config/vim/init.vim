@@ -111,6 +111,10 @@ g:markdown_fenced_languages = [
 	'python', 'php', 'scala',
 ]
 
+g:ale_fixers = {
+	python: ['ruff', 'ruff_format'],
+}
+g:ale_fix_on_save = 1
 g:ale_set_balloons = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
