@@ -60,7 +60,11 @@ if has('linebreak')
 	set linebreak showbreak=↩
 endif
 
-set relativenumber
+# Setting both number and relativenumber gets you a "hybrid" setup where the
+# current line's absolute number is displayed, but the other lines have
+# relative numbmers displayed. It's more useful than always seeing a 0 for the
+# current line.
+set number relativenumber
 set showcmd
 set title
 
