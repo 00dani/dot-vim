@@ -71,6 +71,7 @@ enddef
 
 def ConfigurePlugins(): void
 	g:battery#component_format = '%s %v%%'
+	g:nerdfont#autofix_cellwidths = 0
 	g:crystalline_theme = 'gruvbox8'
 enddef
 
