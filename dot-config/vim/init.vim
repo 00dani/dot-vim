@@ -115,6 +115,12 @@ g:markdown_fenced_languages = [
 	'python', 'php', 'scala',
 ]
 
+# A really quick updatetime is preferable to get vim-signify to check for
+# unsaved changes in your buffer more regularly. It's all asynchronous so
+# running it more regularly ought to be fine.
+set updatetime=100
+g:signify_number_highlight = 1
+
 g:ale_fixers = {
 	python: ['ruff', 'ruff_format'],
 }
