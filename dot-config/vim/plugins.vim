@@ -87,6 +87,9 @@ if !isdirectory($VIMRUNTIME .. '/pack/dist/opt/editorconfig')
 	minpac#add('editorconfig/editorconfig-vim', {name: 'editorconfig', type: 'opt'})
 endif
 
+# Access Zoxide, a frecency-powered cd command, from inside Vim.
+minpac#add('nanotee/zoxide.vim')
+
 # skim is a standalone fuzzy finder, kinda like fzf or fzy or selecta, but
 # written in Rust. These two plugins teach Vim to integrate with it, so you
 # can use skim's high performance fuzzy finding to locate stuff (files,
