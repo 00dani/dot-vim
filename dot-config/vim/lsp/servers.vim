@@ -90,6 +90,16 @@ const lspServers = [
 	},
 
 	{
+		name: 'typst-lsp',
+		filetype: 'typst',
+		path: exepath('typst-lsp'),
+		initializationOptions: {
+			exportPdf: 'onType',
+		},
+		install: 'cargo install typst-lsp',
+	},
+
+	{
 		name: 'vim-language-server',
 		filetype: 'vim',
 		path: expand('~/.local/bin/vim-language-server'),

@@ -171,6 +171,11 @@ minpac#add('fladson/vim-kitty')
 # PHPStan config file in my case.
 minpac#add('fpob/nette.vim')
 
+# Syntax highlighting and other minor niceties for Typst source. Nothing too
+# exciting: we also rely on communicating with typst-lsp for full language
+# support functionality.
+minpac#add('kaarmu/typst.vim')
+
 # Really good semantic folding for YAML and YAML-like files. If you're
 # curious: https://pedrohdz.com/posts/programming/yaml_vim_folds/
 minpac#add('pedrohdz/vim-yaml-folds')
