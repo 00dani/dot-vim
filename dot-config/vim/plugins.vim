@@ -180,10 +180,6 @@ minpac#add('kaarmu/typst.vim')
 # curious: https://pedrohdz.com/posts/programming/yaml_vim_folds/
 minpac#add('pedrohdz/vim-yaml-folds')
 
-# Extend Vim's standard Zsh syntax highlighting with special support for
-# Zinit's ice syntax, since that's what I use in dot/zsh.
-minpac#add('zdharma-continuum/zinit-vim-syntax')
-
 # An interactive mode for Taskwarrior, built as a Vim plugin. It's obviously
 # only useful if Taskwarrior is installed.
 if executable('task')
