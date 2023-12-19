@@ -168,6 +168,10 @@ minpac#add('NoahTheDuke/vim-just')
 # kovidgoyal/kitty is my daily driver terminal emulator. Yay!
 minpac#add('fladson/vim-kitty')
 
+# Really good support for LaTeX, including enhanced syntax highlighting but
+# also auto-compilation and SyncTeX search support in both directions.
+minpac#add('lervag/vimtex')
+
 # Syntax highlighting for .neon files, like phpstan.neon. Nette is actually a
 # full-blown PHP web framework and this plugin provides other Nette tooling
 # too, but I don't use Nette so it's really just providing syntax for the
