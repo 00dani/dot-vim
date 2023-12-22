@@ -74,6 +74,14 @@ const lspServers = [
 	},
 
 	{
+		name: 'texlab',
+		filetype: ['tex', 'plaintex', 'bib'],
+		path: '/usr/local/bin/texlab',
+		args: [],
+		install: 'brew install texlab',
+	},
+
+	{
 		name: 'tilt-lsp',
 		filetype: 'bzl',
 		path: '/usr/local/bin/tilt',
