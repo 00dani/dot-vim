@@ -52,9 +52,9 @@ const lspServers = [
 	{
 		name: 'pylsp',
 		filetype: 'python',
-		path: '/usr/local/bin/pylsp',
+		path: expand('~/.local/bin/pylsp'),
 		args: [],
-		install: 'brew install python-lsp-server',
+		install: 'pipx install python-lsp-server[all]',
 	},
 
 	{
