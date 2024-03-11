@@ -139,6 +139,16 @@ augroup glyphPalette
 	autocmd FileType fern g:glyph_palette#apply()
 augroup END
 
+set spelllang=en_au
+g:lexical#dictionary_key = '<leader>k'
+g:lexical#thesaurus = [$XDG_CACHE_HOME .. '/vim/thesaurus/mthesaur.txt']
+g:lexical#thesaurus_key = '<leader>t'
+augroup lexical
+	autocmd!
+	autocmd FileType markdown,mkd lexical#init()
+	autocmd FileType tex lexical#init()
+augroup END
+
 # Configure a statusline and tabline using vim-crystalline. I tried a bunch of
 # different statusline plugins and this one, which is basically just a utility
 # library for writing your *own* statusline functions, worked the best for my

@@ -172,6 +172,10 @@ minpac#add('fladson/vim-kitty')
 # also auto-compilation and SyncTeX search support in both directions.
 minpac#add('lervag/vimtex')
 
+# Dramatically buff Vim's built-in dictionary and thesaurus features when
+# editing prose, making it much more viable for that kind of work.
+minpac#add('preservim/vim-lexical')
+
 # Syntax highlighting for .neon files, like phpstan.neon. Nette is actually a
 # full-blown PHP web framework and this plugin provides other Nette tooling
 # too, but I don't use Nette so it's really just providing syntax for the
