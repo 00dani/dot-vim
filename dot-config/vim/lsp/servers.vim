@@ -50,6 +50,21 @@ const lspServers = [
 	},
 
 	{
+		name: 'PowerShellEditorServices',
+		filetype: 'ps1',
+		path: exepath('pwsh'),
+		args: ['-NoLogo', '-NoProfile', '-Command', expand('~/.cache/powershell/PowerShellEditorServices/Start-EditorServices.ps1') .. ' -Stdio'],
+		installed: () => executable('pwsh') && filereadable(expand('~/.cache/powershell/PowerShellEditorServices/Start-EditorServices.ps1')),
+		install: [
+			'mkdir -p ~/.cache/powershell',
+			'cd ~/.cache/powershell',
+			'wget https://github.com/PowerShell/PowerShellEditorServices/releases/latest/download/PowerShellEditorServices.zip',
+			'unzip PowerShellEditorServices.zip',
+			'rm PowerShellEditorServices.zip'
+		]->join(' && ')
+	},
+
+	{
 		name: 'pylsp',
 		filetype: 'python',
 		path: expand('~/.local/bin/pylsp'),
