@@ -157,6 +157,9 @@ minpac#add('lambdalisue/fern-ssh')
 # vim-endwise for XML. Very nice to have when working on HTML documents.
 minpac#add('alvan/vim-closetag')
 
+# Syntax and indent support for Jinja2 templates.
+minpac#add('lepture/vim-jinja')
+
 # Syntax highlighting for scripts written in jq's filter language.
 minpac#add('vito-c/jq.vim')
 
