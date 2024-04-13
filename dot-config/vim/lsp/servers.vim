@@ -53,7 +53,11 @@ const lspServers = [
 		name: 'PowerShellEditorServices',
 		filetype: 'ps1',
 		path: exepath('pwsh'),
-		args: ['-NoLogo', '-NoProfile', '-Command', expand('~/.cache/powershell/PowerShellEditorServices/Start-EditorServices.ps1') .. ' -Stdio'],
+		args: [
+			'-NoLogo', '-NoProfile',
+			'-Command', expand('~/.cache/powershell/PowerShellEditorServices/Start-EditorServices.ps1'),
+			' -Stdio', '-SessionDetailsPath', expand('~/.cache/powershell/PowerShellEditorServices/session.json'),
+		],
 		installed: () => executable('pwsh') && filereadable(expand('~/.cache/powershell/PowerShellEditorServices/Start-EditorServices.ps1')),
 		install: [
 			'mkdir -p ~/.cache/powershell',
