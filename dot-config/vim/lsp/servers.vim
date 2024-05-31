@@ -136,7 +136,7 @@ const lspServers = [
 
 	{
 		name: 'vscode-css-language-server',
-		filetype: 'css',
+		filetype: ['css', 'less', 'sass', 'scss'],
 		path: expand('~/.local/bin/vscode-css-language-server'),
 		args: ['--stdio'],
 		install: 'npm install -g vscode-langservers-extracted',
