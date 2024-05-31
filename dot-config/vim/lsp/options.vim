@@ -2,6 +2,7 @@ vim9script
 
 export const lspOptions = {
 	aleSupport: true,
+	autoComplete: false, # I prefer manual tab completion using MUcomplete
 	ignoreMissingServer: true,
 }
 

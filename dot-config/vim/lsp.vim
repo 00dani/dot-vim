@@ -35,6 +35,6 @@ export def Configure(): void
 		augroup END
 	endif
 
-	g:lsp#lsp#AddServer(installedServers)
 	g:lsp#options#OptionsSet(options.lspOptions)
+	g:lsp#lsp#AddServer(installedServers)
 enddef
