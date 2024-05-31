@@ -5,6 +5,14 @@ import '../tools/strings.vim'
 
 const lspServers = [
 	{
+		name: 'clojure-lsp',
+		filetype: 'clojure',
+		path: '/usr/local/bin/clojure-lsp',
+		args: [],
+		install: 'brew install clojure-lsp/brew/clojure-lsp-native',
+	},
+
+	{
 		name: 'dockerfile-langserver',
 		filetype: 'dockerfile',
 		path: expand('~/.local/bin/docker-langserver'),
