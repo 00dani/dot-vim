@@ -21,6 +21,14 @@ const lspServers = [
 	},
 
 	{
+		name: 'intelephense',
+		filetype: 'php',
+		path: expand('~/.local/bin/intelephense'),
+		args: ['--stdio'],
+		install: 'npm install -g intelephense',
+	},
+
+	{
 		name: 'lua-language-server',
 		filetype: 'lua',
 		path: '/usr/local/bin/lua-language-server',
@@ -45,17 +53,6 @@ const lspServers = [
 	},
 
 	perl.Lsp('Perl::LanguageServer', ['-e', 'Perl::LanguageServer::run']),
-
-	{
-		name: 'phpactor',
-		filetype: 'php',
-		path: expand('~/bin/phpactor'),
-		args: ['language-server'],
-		initializationOptions: {
-			'language_server_configuration.auto_config': false,
-		},
-		install: 'curl -Lo phpactor https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar && chmod u+x phpactor && mv phpactor ~/bin',
-	},
 
 	{
 		name: 'PowerShellEditorServices',
