@@ -82,6 +82,14 @@ const lspServers = [
 	},
 
 	{
+		name: 'rust-analyzer',
+		filetype: 'rust',
+		path: expand('~/.local/share/cargo/bin/rust-analyzer'),
+		args: [],
+		install: 'rustup component add rust-analyzer',
+	},
+
+	{
 		name: 'solargraph',
 		filetype: 'ruby',
 		path: '/usr/local/bin/solargraph',
