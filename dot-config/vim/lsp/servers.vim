@@ -13,6 +13,14 @@ const lspServers = [
 	},
 
 	{
+		name: 'cue-lsp',
+		filetype: 'cue',
+		path: '/usr/local/bin/cue',
+		args: ['lsp'],
+		install: 'brew install cue-lang/tap/cue',
+	},
+
+	{
 		name: 'dockerfile-langserver',
 		filetype: 'dockerfile',
 		path: expand('~/.local/bin/docker-langserver'),

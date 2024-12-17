@@ -157,6 +157,11 @@ minpac#add('lambdalisue/fern-ssh')
 # vim-endwise for XML. Very nice to have when working on HTML documents.
 minpac#add('alvan/vim-closetag')
 
+# Support for the CUE data language. CUE also provides an LSP, which Vim's
+# configured to use, so this plugin is mostly relevant for syntax
+# highlighting.
+minpac#add('jjo/vim-cue')
+
 # Hurlfile syntax from its official repository.
 minpac#add('Orange-OpenSource/hurl', {subdir: 'contrib/vim'})
 
