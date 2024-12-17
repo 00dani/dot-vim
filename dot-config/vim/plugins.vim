@@ -157,6 +157,9 @@ minpac#add('lambdalisue/fern-ssh')
 # vim-endwise for XML. Very nice to have when working on HTML documents.
 minpac#add('alvan/vim-closetag')
 
+# Hurlfile syntax from its official repository.
+minpac#add('Orange-OpenSource/hurl', {subdir: 'contrib/vim'})
+
 # Lots of extra syntax support for JavaScript along with its relatives
 # (TypeScript, CoffeeScript) since Vim's built-in support is a bit dated.
 minpac#add('kchmck/vim-coffee-script')
