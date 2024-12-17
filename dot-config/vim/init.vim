@@ -107,6 +107,8 @@ g:GPGDefaultRecipients = [
 	'Danielle McLean <dani@00dani.me>',
 ]
 
+g:javascript_plugin_jsdoc = 1
+
 g:markdown_folding = 1
 g:markdown_fenced_languages = [
 	'bash', 'c', 'dockerfile',
@@ -121,6 +123,11 @@ g:markdown_fenced_languages = [
 set updatetime=100
 g:signify_number_highlight = 1
 
+g:ale_linters = {
+	javascript: ['eslint'],
+	javascriptreact: ['eslint'],
+	typescript: ['eslint'],
+}
 g:ale_fixers = {
 	python: ['ruff', 'ruff_format'],
 }

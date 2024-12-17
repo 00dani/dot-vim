@@ -157,6 +157,13 @@ minpac#add('lambdalisue/fern-ssh')
 # vim-endwise for XML. Very nice to have when working on HTML documents.
 minpac#add('alvan/vim-closetag')
 
+# Lots of extra syntax support for JavaScript along with its relatives
+# (TypeScript, CoffeeScript) since Vim's built-in support is a bit dated.
+minpac#add('kchmck/vim-coffee-script')
+minpac#add('pangloss/vim-javascript')
+minpac#add('MaxMEllon/vim-jsx-pretty')
+minpac#add('HerringtonDarkholme/yats.vim')
+
 # Syntax and indent support for Jinja2 templates.
 minpac#add('lepture/vim-jinja')
 
