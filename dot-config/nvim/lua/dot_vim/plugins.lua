@@ -24,9 +24,7 @@ return {
 	-- Unimpaired's handy bracket mappings, but also which-key.nvim knows about them and can remind me of them.
 	{"afreakk/unimpaired-which-key.nvim", dependencies = {"tpope/vim-unimpaired"}, config = function()
 		local wk = require "which-key"
-		local uwk = require "unimpaired-which-key"
-		wk.register(uwk.normal_mode)
-		wk.register(uwk.normal_and_visual_mode, {mode = {"n", "v"}})
+		wk.add(require "unimpaired-which-key")
 	end},
 
 	-- Fuzzy finder for all sorts of things. Files, buffers, LSP references and definitions, the list goes on.

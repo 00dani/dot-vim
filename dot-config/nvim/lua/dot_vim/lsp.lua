@@ -35,7 +35,7 @@ local servers = {
 	pylsp = {},
 	solargraph = {},
 	taplo = {},
-	tsserver = {},
+	ts_ls = {},
 	yamlls = {},
 }
 
